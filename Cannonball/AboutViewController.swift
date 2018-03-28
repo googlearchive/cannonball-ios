@@ -18,6 +18,7 @@ import UIKit
 import Crashlytics
 import TwitterKit
 //import DigitsKit
+import Firebase
 
 class AboutViewController: UIViewController {
 
@@ -69,6 +70,11 @@ class AboutViewController: UIViewController {
             sessionStore.logOutUserID(userId)
         }
 //        Digits.sharedInstance().logOut()
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
 
         // Remove user information for any upcoming crashes in Crashlytics.
         Crashlytics.sharedInstance().setUserIdentifier(nil)
