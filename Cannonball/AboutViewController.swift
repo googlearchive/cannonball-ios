@@ -17,7 +17,7 @@
 import UIKit
 import Crashlytics
 import TwitterKit
-import DigitsKit
+//import DigitsKit
 
 class AboutViewController: UIViewController {
 
@@ -68,7 +68,7 @@ class AboutViewController: UIViewController {
         if let userId = sessionStore.session()?.userID {
             sessionStore.logOutUserID(userId)
         }
-        Digits.sharedInstance().logOut()
+//        Digits.sharedInstance().logOut()
 
         // Remove user information for any upcoming crashes in Crashlytics.
         Crashlytics.sharedInstance().setUserIdentifier(nil)
