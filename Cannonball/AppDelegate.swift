@@ -17,7 +17,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import TwitterKit
 import MoPub
 import Firebase
 import FirebaseAuthUI
@@ -33,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let welcome = "Welcome to Cannonball! Please onboard with the Fabric Mac app. Check the instructions in the README file."
         assert(Bundle.main.object(forInfoDictionaryKey: "Fabric") != nil, welcome)
 
-        // Register Crashlytics, Twitter, Digits and MoPub with Fabric.
-        Fabric.with([Crashlytics.self, Twitter.self, MoPub.self])
+        // Register Crashlytics and MoPub with Fabric.
+        Fabric.with([Crashlytics.self, MoPub.self])
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()

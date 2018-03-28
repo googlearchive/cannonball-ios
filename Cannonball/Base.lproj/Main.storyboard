@@ -444,38 +444,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eD-LI-DDW">
-                                <rect key="frame" x="62.5" y="269.5" width="250" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="aQI-oY-o65"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <color key="tintColor" red="0.2784313725" green="0.60392156860000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
-                                <state key="normal" title="  Sign In with Twitter" image="Twitter">
-                                    <color key="titleColor" red="0.27843137254901962" green="0.60392156862745094" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInWithTwitter:" destination="LWk-Ji-zOn" eventType="touchUpInside" id="grY-Bw-c9e"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyF-uy-Dc6">
-                                <rect key="frame" x="62.5" y="349.5" width="250" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="dhH-3p-BiM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <color key="tintColor" red="0.074509803920000006" green="0.59607843140000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
-                                <state key="normal" title="  Sign In with Phone" image="Phone">
-                                    <color key="titleColor" red="0.074509803920000006" green="0.59607843140000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInWithPhone:" destination="LWk-Ji-zOn" eventType="touchUpInside" id="634-sC-ktg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syj-zi-fhc">
                                 <rect key="frame" x="171.5" y="625" width="31" height="34"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
@@ -492,14 +460,28 @@
                                 <rect key="frame" x="167.5" y="120" width="40" height="40"/>
                                 <color key="tintColor" red="0.42745098040000001" green="0.53333333329999999" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyF-uy-Dc6">
+                                <rect key="frame" x="62" y="283" width="250" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="dhH-3p-BiM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <color key="tintColor" red="0.074509803920000006" green="0.59607843140000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                                <state key="normal" title="  Sign In with Phone" image="Phone">
+                                    <color key="titleColor" red="0.074509803920000006" green="0.59607843140000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInWithPhone:" destination="LWk-Ji-zOn" eventType="touchUpInside" id="634-sC-ktg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.90980392160000001" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Syj-zi-fhc" firstAttribute="centerX" secondItem="uyF-uy-Dc6" secondAttribute="centerX" id="5Zp-qF-Wb4"/>
                             <constraint firstAttribute="centerX" secondItem="PFT-X7-KfD" secondAttribute="centerX" id="e3I-1A-nT3"/>
-                            <constraint firstAttribute="centerX" secondItem="7eD-LI-DDW" secondAttribute="centerX" id="hCI-GM-xi3"/>
                             <constraint firstAttribute="centerY" secondItem="uyF-uy-Dc6" secondAttribute="centerY" constant="-40" id="kIm-bK-QO1"/>
-                            <constraint firstAttribute="centerY" secondItem="7eD-LI-DDW" secondAttribute="centerY" constant="40" id="moF-SL-mOV"/>
                             <constraint firstAttribute="centerX" secondItem="uyF-uy-Dc6" secondAttribute="centerX" id="npG-cH-02h"/>
                             <constraint firstItem="7GY-bx-6m5" firstAttribute="top" secondItem="Syj-zi-fhc" secondAttribute="bottom" constant="8" symbolic="YES" id="nvx-QU-6st"/>
                             <constraint firstItem="PFT-X7-KfD" firstAttribute="top" secondItem="egf-QX-w66" secondAttribute="bottom" constant="100" id="uKg-WV-b9G"/>
@@ -508,7 +490,6 @@
                     <connections>
                         <outlet property="logoView" destination="PFT-X7-KfD" id="8nt-sK-TZy"/>
                         <outlet property="signInPhoneButton" destination="uyF-uy-Dc6" id="9w2-Vs-3BF"/>
-                        <outlet property="signInTwitterButton" destination="7eD-LI-DDW" id="4iD-62-Uzn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMd-PQ-HmI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -567,7 +548,6 @@
         <image name="Popular" width="32" height="32"/>
         <image name="Share" width="32" height="32"/>
         <image name="Tick" width="32" height="32"/>
-        <image name="Twitter" width="26" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8ZM-rV-Mkz"/>

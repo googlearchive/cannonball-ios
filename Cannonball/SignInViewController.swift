@@ -15,8 +15,6 @@
 //
 
 import UIKit
-import TwitterKit
-//import DigitsKit
 import Crashlytics
 import Firebase
 import FirebaseAuthUI
@@ -50,7 +48,6 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
 
         // Decorate the Sign In with Twitter and Phone buttons.
         let defaultColor = signInPhoneButton.titleLabel?.textColor
-        decorateButton(signInTwitterButton, color: UIColor(red: 0.333, green: 0.675, blue: 0.933, alpha: 1))
         decorateButton(signInPhoneButton, color: defaultColor!)
 
         // Add custom image to the Sign In with Phone button.
@@ -67,46 +64,27 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
 
     @IBAction func signInWithPhone(_ sender: UIButton) {
 
-        // Create a Digits appearance with Cannonball colors.
-//        let configuration = DGTAuthenticationConfiguration(accountFields: .defaultOptionMask)
-//
-//        configuration?.appearance = DGTAppearance()
-//        configuration?.appearance.backgroundColor = UIColor.cannonballBeigeColor()
-//        configuration?.appearance.accentColor = UIColor.cannonballGreenColor()
-        
+        // Call Firebase UI Phone Auth
         let phoneProvider = FUIAuth.defaultAuthUI()?.providers.first as! FUIPhoneAuth
         phoneProvider.signIn(withPresenting:self, phoneNumber: nil)
-
-        // Start the Firebase Phone authentication flow
-        //                Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error?.localizedDescription as Any])
-        //
-        //                // Tie crashes to a Digits user ID in Crashlytics.
-        //                Crashlytics.sharedInstance().setUserIdentifier(user?.userID)
-        //
-        //                // Log Answers Custom Event.
-        //                Answers.logLogin(withMethod: "Digits", success: true, customAttributes: ["User ID": session?.userID as Any])
-        //                DispatchQueue.main.async {
-        //                    // Navigate to the main app screen to select a theme.
-        //                    self.navigateToMainAppScreen()
-
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         switch error {
         case .some(let error as NSError) where UInt(error.code) == FUIAuthErrorCode.userCancelledSignIn.rawValue:
             print("User cancelled sign-in")
-            Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error.localizedDescription as Any])
+            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .some(let error as NSError) where error.userInfo[NSUnderlyingErrorKey] != nil:
             print("Login error: \(error.userInfo[NSUnderlyingErrorKey]!)")
-            Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error.localizedDescription as Any])
+            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .some(let error):
             print("Login error: \(error.localizedDescription)")
-            Answers.logLogin(withMethod: "Digits", success: false, customAttributes: ["Error": error.localizedDescription as Any])
+            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .none:
-            Answers.logLogin(withMethod: "Digits", success: true, customAttributes: ["User ID": user?.uid as Any])
+            Answers.logLogin(withMethod: "PhoneAuth", success: true, customAttributes: ["User ID": user?.uid as Any])
             Crashlytics.sharedInstance().setUserIdentifier(user?.uid)
             DispatchQueue.main.async {
                 // Navigate to the main app screen to select a theme.
