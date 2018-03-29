@@ -17,7 +17,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import MoPub
 import Firebase
 import FirebaseAuthUI
 import FirebasePhoneAuthUI
