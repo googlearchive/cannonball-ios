@@ -10,10 +10,7 @@ target 'Cannonball' do
     pod 'Firebase/Auth'
     pod 'FirebaseUI/Auth'
     pod 'FirebaseUI/Phone'
-    
-    
-    target 'CannonballTests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
+
+    pod 'Fabric', '~> 1.7.6'
+    pod 'Crashlytics', '~> 3.10.1'
 end

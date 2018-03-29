@@ -28,13 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Developers: Welcome! Get started with Fabric.app.
-        let welcome = "Welcome to Cannonball! Please onboard with the Fabric Mac app. Check the instructions in the README file."
-        assert(Bundle.main.object(forInfoDictionaryKey: "Fabric") != nil, welcome)
-
-        // Register Crashlytics and MoPub with Fabric.
-        Fabric.with([Crashlytics.self, MoPub.self])
-        
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
 
