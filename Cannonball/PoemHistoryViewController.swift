@@ -123,28 +123,18 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
         // Generate the image of the poem.
         let poemImage = poemCell.capturePoemImage()
-      // TODO: implement native sharing.
-                // Log Answers Custom Event.
-//                Answers.logShare(withMethod: "Twitter", contentName: poem.theme, contentType: "Poem", contentId: poem.UUID.description,
-//                    customAttributes: [
-//                        "Poem": poem.getSentence(),
-//                        "Theme": poem.theme,
-//                        "Length": poem.words.count,
-//                        "Picture": poem.picture
-//                    ]
-//                )
-//            } else if result == .cancelled {
-//                // Log Answers Custom Event.
-//                Answers.logCustomEvent(withName: "Cancelled Twitter Sharing",
-//                    customAttributes: [
-//                        "Poem": poem.getSentence(),
-//                        "Theme": poem.theme,
-//                        "Length": poem.words.count,
-//                        "Picture": poem.picture
-//                    ]
-//                )
-//            }
-//        }
+
+        let activityViewController = UIActivityViewController(activityItems: [poemImage], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+        // Log Answers Custom Event.
+        Answers.logShare(withMethod: "iOS Native Share", contentName: poem.theme, contentType: "Poem", contentId: poem.UUID.description,
+            customAttributes: [
+                "Poem": poem.getSentence(),
+                "Theme": poem.theme,
+                "Length": poem.words.count,
+                "Picture": poem.picture
+            ]
+        )
     }
 
     // MARK: Utilities
