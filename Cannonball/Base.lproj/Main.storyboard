@@ -17,27 +17,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Popular Poems-->
-        <scene sceneID="xvW-ne-Fdi">
-            <objects>
-                <tableViewController id="Vc8-Wc-foP" customClass="PoemTimelineViewController" customModule="Cannonball" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="1qJ-gv-FWZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.90980392160000001" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.99607843139999996" green="0.90980392160000001" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="Vc8-Wc-foP" id="i8n-EU-aNW"/>
-                            <outlet property="delegate" destination="Vc8-Wc-foP" id="mny-ZX-IZh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Popular Poems" id="A4z-bM-j9w"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HKI-d7-bOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="776" y="1303"/>
-        </scene>
         <!--Theme Chooser View Controller-->
         <scene sceneID="pHw-4S-UaI">
             <objects>
@@ -93,21 +72,15 @@
                                 <segue destination="wiA-rN-OmI" kind="push" id="PGs-2w-0OG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Popular" id="Brd-vp-Ykq">
-                            <connections>
-                                <segue destination="Vc8-Wc-foP" kind="push" id="3W5-0s-bxT"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="historyButton" destination="e6j-wo-e5J" id="kh7-iB-0s5"/>
-                        <outlet property="tweetsButton" destination="Brd-vp-Ykq" id="NeO-0U-6c5"/>
                         <segue destination="oFl-4R-C3q" kind="modal" identifier="ShowAbout" id="rAS-nZ-AL1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiU-aB-91w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344.80000000000001" y="587.88"/>
+            <point key="canvasLocation" x="329" y="588"/>
         </scene>
         <!--Poem Composer View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -260,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="587.88"/>
+            <point key="canvasLocation" x="329" y="1415"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="CFx-V6-lSn">
@@ -353,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ojv-YX-hWI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344" y="-129"/>
+            <point key="canvasLocation" x="1355" y="197"/>
         </scene>
         <!--Your Poems-->
         <scene sceneID="JKy-0w-neF">
@@ -430,7 +403,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqm-rW-1b8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="-129"/>
+            <point key="canvasLocation" x="900" y="1028"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Or4-ha-qWJ">
@@ -537,7 +510,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz6-8o-FHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="-129"/>
+            <point key="canvasLocation" x="900" y="197"/>
         </scene>
     </scenes>
     <resources>
@@ -545,7 +518,6 @@
         <image name="History" width="32" height="32"/>
         <image name="Logo" width="40" height="40"/>
         <image name="Phone" width="26" height="22"/>
-        <image name="Popular" width="32" height="32"/>
         <image name="Share" width="32" height="32"/>
         <image name="Tick" width="32" height="32"/>
     </resources>

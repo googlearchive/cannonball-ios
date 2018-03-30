@@ -24,7 +24,6 @@ class ThemeChooserViewController: UITableViewController {
 
     @IBOutlet weak var historyButton: UIBarButtonItem!
 
-    @IBOutlet weak var tweetsButton: UIBarButtonItem!
 
     var logoView: UIImageView!
 
