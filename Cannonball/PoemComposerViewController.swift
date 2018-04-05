@@ -15,6 +15,7 @@
 //
 
 import UIKit
+import Firebase
 import QuartzCore
 import Crashlytics
 
@@ -324,7 +325,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
 
     func savePoem() {
         // Save the poem current completion date.
-        poem.date = Date()
+        poem.finishPoem()
 
         // Save the theme name for the poem.
         poem.theme = theme.name
@@ -333,7 +334,10 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         poem.picture = themePictures[imageCarousel.currentImageIndex]
 
         // Make the poem object persist.
-        PoemPersistence.sharedInstance.persistPoem(poem)
+        // Save the poem to firebase
+        let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
+        // Append the newly created poem.
+        myPoemsRef.childByAutoId().setValue(poem.encode())
     }
 
     func refreshWordBank() {

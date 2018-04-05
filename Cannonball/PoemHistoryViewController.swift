@@ -16,7 +16,8 @@
 
 import UIKit
 import Crashlytics
-
+import FirebaseDatabaseUI
+import Firebase
 
 class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
@@ -34,9 +35,14 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
 
-        // Retrieve the poems.
-        poems = PoemPersistence.sharedInstance.retrievePoems()
-
+        let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
+        let query = myPoemsRef.queryOrderedByKey()
+        self.tableView.dataSource = self.tableView.bind(to: query) { tableView, indexPath, snapshot in
+            // Dequeue cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            // Populate cell
+            return cell
+        }
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
 
@@ -72,47 +78,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     // MARK: UITableViewDataSource
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return poems.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier, for: indexPath)
-
-        if let poemCell = cell as? PoemCell {
-            poemCell.delegate = self
-            let poem = poems[indexPath.row]
-            poemCell.configureWithPoem(poem)
-        }
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Find the poem displayed at this index path.
-            let poem = poems[indexPath.row]
-
-            // Remove the poem and reload the table view.
-            poems = poems.filter( { $0 != poem })
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-
-            // Display the no poems label if this was the last poem.
-            toggleNoPoemsLabel()
-
-            // Archive and save the poems again.
-            PoemPersistence.sharedInstance.overwritePoems(poems)
-
-            // Log Answers Custom Event.
-            Answers.logCustomEvent(withName: "Removed Poem", customAttributes: nil)
-        }
-    }
-
-    // MARK: UITableViewDelegate
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.width * 0.75
-    }
 
     // MARK: PoemCellDelegate
 
@@ -126,15 +91,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
         let activityViewController = UIActivityViewController(activityItems: [poemImage], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
-        // Log Answers Custom Event.
-        Answers.logShare(withMethod: "iOS Native Share", contentName: poem.theme, contentType: "Poem", contentId: poem.UUID.description,
-            customAttributes: [
-                "Poem": poem.getSentence(),
-                "Theme": poem.theme,
-                "Length": poem.words.count,
-                "Picture": poem.picture
-            ]
-        )
     }
 
     // MARK: Utilities

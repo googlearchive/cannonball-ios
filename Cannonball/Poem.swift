@@ -16,17 +16,17 @@
 
 import Foundation
 
-open class Poem: NSObject, NSCoding {
+open class Poem {
 
     // MARK: Types
 
     // String constants used to archive the stored properties of a poem.
     fileprivate struct SerializationKeys {
-        static let words = "words"
-        static let picture = "picture"
-        static let theme = "theme"
-        static let date = "date"
-        static let uuid = "uuid"
+        static let words : String = "words"
+        static let text : String = "text"
+        static let picture : String = "imageId"
+        static let theme : String = "theme"
+        static let timestamp : String = "timestamp"
     }
 
     // The words composing a poem.
@@ -39,29 +39,17 @@ open class Poem: NSObject, NSCoding {
     open var theme: String = ""
 
     // The date a poem is completed.
-    open var date = Date()
+    open var timestamp = -1
 
-    // An underlying identifier for each poem.
-    open fileprivate(set) var UUID = Foundation.UUID()
-
-    // MARK: Initialization
-
-    override init() {
-        super.init()
+    convenience init() {
+        self.init(words: [], picture: "", theme: "", timestamp: -1)
     }
-
     // Initialize a Poem instance will all its properties, including a UUID.
-    fileprivate init(words: [String], picture: String, theme: String, date: Date, UUID: Foundation.UUID) {
+    init(words: [String], picture: String, theme: String, timestamp: Int) {
         self.words = words
         self.picture = picture
         self.theme = theme
-        self.date = date
-        self.UUID = UUID
-    }
-
-    // Initialize a Poem instance with all its public properties.
-    convenience init(words: [String], picture: String, theme: String, date: Date) {
-        self.init(words: words, picture: picture, theme: theme, date: date, UUID: Foundation.UUID())
+        self.timestamp = timestamp
     }
 
     // Retrieve the poem words as one sentence.
@@ -69,33 +57,31 @@ open class Poem: NSObject, NSCoding {
         return words.joined(separator: " ")
     }
 
-    // MARK: NSCoding
-
-    required public init?(coder aDecoder: NSCoder) {
-        words = aDecoder.decodeObject(forKey: SerializationKeys.words) as! [String]
-        picture = aDecoder.decodeObject(forKey: SerializationKeys.picture) as! String
-        theme = aDecoder.decodeObject(forKey: SerializationKeys.theme) as! String
-        date = aDecoder.decodeObject(forKey: SerializationKeys.date) as! Date
-        UUID = aDecoder.decodeObject(forKey: SerializationKeys.uuid) as! Foundation.UUID
+    func getTimestamp() -> Int {
+        return Int(NSDate().timeIntervalSince1970)
     }
 
-    open func encode(with aCoder: NSCoder) {
-        aCoder.encode(words, forKey: SerializationKeys.words)
-        aCoder.encode(picture, forKey: SerializationKeys.picture)
-        aCoder.encode(theme, forKey: SerializationKeys.theme)
-        aCoder.encode(date, forKey: SerializationKeys.date)
-        aCoder.encode(UUID, forKey: SerializationKeys.uuid)
+    func finishPoem() {
+        timestamp = getTimestamp()
     }
 
-    // MARK: Overrides
+    // Initialize a Poem instance with all its public properties.
+    convenience init(data : NSDictionary) {
+        let words = data[SerializationKeys.words]
+        let picture = data[SerializationKeys.picture]
+        let theme = data[SerializationKeys.theme]
+        let timestamp = data[SerializationKeys.timestamp]
 
-    // Two poems are equal only if their UUIDs match.
-    override open func isEqual(_ object: Any?) -> Bool {
-        if let poem = object as? Poem {
-            return UUID == poem.UUID
-        }
-
-        return false
+        self.init( words : words as! [String], picture : picture as! String, theme : theme as! String, timestamp: timestamp as! Int)
     }
 
+    open func encode() -> NSDictionary {
+        let data : NSDictionary = [
+            SerializationKeys.text: getSentence(),
+            SerializationKeys.picture: picture,
+            SerializationKeys.theme: theme,
+            SerializationKeys.timestamp: timestamp,
+        ]
+        return data;
+    }
 }

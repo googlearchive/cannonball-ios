@@ -66,8 +66,8 @@ class ThemeChooserViewController: UITableViewController {
         tableView.rowHeight = themeTableCellHeight
 
         // Customize the navigation bar.
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.cannonballGreenColor()]
-        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.cannonballGreenColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : Any]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.topItem?.title = ""
