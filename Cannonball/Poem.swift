@@ -21,7 +21,7 @@ open class Poem {
     // MARK: Types
 
     // String constants used to archive the stored properties of a poem.
-    fileprivate struct SerializationKeys {
+    struct SerializationKeys {
         static let words : String = "words"
         static let text : String = "text"
         static let picture : String = "imageId"

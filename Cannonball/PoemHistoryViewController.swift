@@ -27,21 +27,27 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     var poems: [Poem] = []
 
+    var dataSource: FUITableViewDataSource!
+
     // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
 
         let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
         let query = myPoemsRef.queryOrderedByKey()
-        self.tableView.dataSource = self.tableView.bind(to: query) { tableView, indexPath, snapshot in
-            // Dequeue cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-            // Populate cell
-            return cell
+        // We save this as an instance variable so it doesn't get deallocated.
+        self.dataSource = self.tableView.bind(to: query) { tableView, indexPath, snapshot in
+        // Dequeue cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.poemTableCellReuseIdentifier, for: indexPath)
+        // Populate cell
+        let poemDict = snapshot.value as! NSDictionary
+        cell.textLabel!.text = poemDict[Poem.SerializationKeys.text] as? String
+        return cell
         }
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
@@ -76,15 +82,11 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         toggleNoPoemsLabel()
     }
 
-    // MARK: UITableViewDataSource
 
 
     // MARK: PoemCellDelegate
 
     func poemCellWantsToSharePoem(_ poemCell: PoemCell) {
-        // Find the poem displayed at this index path.
-        let indexPath = tableView.indexPath(for: poemCell)
-        let poem = poems[(indexPath?.row)!]
 
         // Generate the image of the poem.
         let poemImage = poemCell.capturePoemImage()
