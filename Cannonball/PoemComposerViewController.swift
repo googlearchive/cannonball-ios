@@ -325,7 +325,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
 
     func savePoem() {
         // Save the poem current completion date.
-        poem.finishPoem()
+        poem.timestamp = Int(NSDate().timeIntervalSince1970)
 
         // Save the theme name for the poem.
         poem.theme = theme.name
@@ -333,8 +333,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         // Save the currently displayed picture.
         poem.picture = themePictures[imageCarousel.currentImageIndex]
 
-        // Make the poem object persist.
-        // Save the poem to firebase
+        // Make the poem object persist by saving it to Firebase.
         let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
         // Append the newly created poem.
         myPoemsRef.childByAutoId().setValue(poem.encode())

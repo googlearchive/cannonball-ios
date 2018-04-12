@@ -22,12 +22,14 @@ open class Poem {
 
     // String constants used to archive the stored properties of a poem.
     struct SerializationKeys {
-        static let words : String = "words"
+        // A String (not an array of such) used by Firebase RTDB.
         static let text : String = "text"
         static let picture : String = "imageId"
         static let theme : String = "theme"
         static let timestamp : String = "timestamp"
     }
+
+    // MARK: Instance variables
 
     // The words composing a poem.
     open var words: [String] = []
@@ -41,15 +43,24 @@ open class Poem {
     // The date a poem is completed.
     open var timestamp = -1
 
-    convenience init() {
-        self.init(words: [], picture: "", theme: "", timestamp: -1)
-    }
     // Initialize a Poem instance will all its properties, including a UUID.
-    init(words: [String], picture: String, theme: String, timestamp: Int) {
+    // Includes default parameters for creating an empty poem.
+    init(words: [String] = [], picture: String = "", theme: String = "", timestamp: Int = -1) {
         self.words = words
         self.picture = picture
         self.theme = theme
         self.timestamp = timestamp
+    }
+
+    // Initialize a Poem from an NSDictionary, most likely returned by Firebase RTDB.
+    convenience init(fromDictionary poemDict : NSDictionary) {
+        let text = poemDict[SerializationKeys.text] as! String
+        let words = text.components(separatedBy: " ")
+        let picture = poemDict[SerializationKeys.picture]
+        let theme = poemDict[SerializationKeys.theme]
+        let timestamp = poemDict[SerializationKeys.timestamp]
+
+        self.init( words : words, picture : picture as! String, theme : theme as! String, timestamp: timestamp as! Int)
     }
 
     // Retrieve the poem words as one sentence.
@@ -57,24 +68,7 @@ open class Poem {
         return words.joined(separator: " ")
     }
 
-    func getTimestamp() -> Int {
-        return Int(NSDate().timeIntervalSince1970)
-    }
-
-    func finishPoem() {
-        timestamp = getTimestamp()
-    }
-
-    // Initialize a Poem instance with all its public properties.
-    convenience init(data : NSDictionary) {
-        let words = data[SerializationKeys.words]
-        let picture = data[SerializationKeys.picture]
-        let theme = data[SerializationKeys.theme]
-        let timestamp = data[SerializationKeys.timestamp]
-
-        self.init( words : words as! [String], picture : picture as! String, theme : theme as! String, timestamp: timestamp as! Int)
-    }
-
+    // Encode the poem as an NSDictionary usable by Firebase RTDB.
     open func encode() -> NSDictionary {
         let data : NSDictionary = [
             SerializationKeys.text: getSentence(),

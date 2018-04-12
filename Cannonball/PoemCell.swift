@@ -38,7 +38,6 @@ class PoemCell: UITableViewCell {
 
     fileprivate var gradient: CAGradientLayer!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
 

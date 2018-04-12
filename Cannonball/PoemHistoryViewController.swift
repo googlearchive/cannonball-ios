@@ -42,12 +42,15 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         let query = myPoemsRef.queryOrderedByKey()
         // We save this as an instance variable so it doesn't get deallocated.
         self.dataSource = self.tableView.bind(to: query) { tableView, indexPath, snapshot in
-        // Dequeue cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.poemTableCellReuseIdentifier, for: indexPath)
-        // Populate cell
-        let poemDict = snapshot.value as! NSDictionary
-        cell.textLabel!.text = poemDict[Poem.SerializationKeys.text] as? String
-        return cell
+            // Dequeue cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.poemTableCellReuseIdentifier, for: indexPath)
+            // Populate cell
+            let poemDict = snapshot.value as! NSDictionary
+            let poem = Poem(fromDictionary: poemDict)
+            if let cell = cell as? PoemCell {
+                cell.configureWithPoem(poem)
+            }
+            return cell
         }
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
@@ -82,6 +85,11 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         toggleNoPoemsLabel()
     }
 
+    // MARK: UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.width * 0.75
+    }
 
 
     // MARK: PoemCellDelegate
@@ -102,7 +110,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
             UIView.animate(withDuration: 0.15, animations: {
                 self.tableView.backgroundView!.isHidden = false
                 self.tableView.backgroundView!.alpha = 1
-            }) 
+            })
         } else {
             UIView.animate(withDuration: 0.15,
                 animations: {
