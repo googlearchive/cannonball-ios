@@ -91,7 +91,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         return tableView.frame.size.width * 0.75
     }
 
-
     // MARK: PoemCellDelegate
 
     func poemCellWantsToSharePoem(_ poemCell: PoemCell) {
