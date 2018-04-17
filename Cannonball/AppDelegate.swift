@@ -29,12 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
 
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user == nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let signInViewController: AnyObject! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
                 self.window?.rootViewController = signInViewController as? UIViewController
+            }
+            else{
+                let myPoemsRef = Database.database().reference().child(user!.uid)
+                myPoemsRef.keepSynced(true)
             }
         }
         return true;

@@ -77,7 +77,7 @@ class CountdownView : UIView {
         }
     }
 
-    func tick() {
+    @objc func tick() {
         secondsRemaining -= displayLink!.duration
     }
 

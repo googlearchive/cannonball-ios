@@ -95,6 +95,10 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
     }
 
     @IBAction func skipSignIn(_ sender: AnyObject) {
+        let anonAuthUI = FUIAuth.defaultAuthUI()!
+        Auth.auth().signInAnonymously() { (user, error) in
+            self.authUI(anonAuthUI, didSignInWith: user, error: error)
+        }
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Skipped Sign In", customAttributes: nil)
     }

@@ -10,6 +10,8 @@ target 'Cannonball' do
     pod 'Firebase/Auth'
     pod 'FirebaseUI/Auth'
     pod 'FirebaseUI/Phone'
+    pod 'Firebase/Database'
+    pod 'FirebaseUI/Database'
 
     pod 'Fabric', '~> 1.7.6'
     pod 'Crashlytics', '~> 3.10.1'

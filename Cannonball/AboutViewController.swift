@@ -41,8 +41,8 @@ class AboutViewController: UIViewController {
         navigationController?.view.bringSubview(toFront: logoView)
 
         // Customize the navigation bar.
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.cannonballGreenColor()]
-        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.cannonballGreenColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : Any]
         navigationController?.navigationBar.tintColor = UIColor.cannonballGreenColor()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
