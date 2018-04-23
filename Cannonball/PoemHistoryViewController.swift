@@ -16,7 +16,6 @@
 
 import UIKit
 import Crashlytics
-import FirebaseDatabaseUI
 import Firebase
 
 class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
@@ -27,31 +26,24 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     var poems: [Poem] = []
 
-    var dataSource: FUITableViewDataSource!
-
     // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Database.database().reference().child(Auth.auth().currentUser!.uid).observe(.value, with: { snapshot in
+            var newPoems: [Poem] = []
+            for item in snapshot.children {
+                let poem = Poem(fromSnapshot: item as! DataSnapshot)
+                newPoems.append(poem)
+            }
 
+            self.poems = newPoems
+            self.tableView.reloadData()
+        })
 
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
 
-        let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
-        let query = myPoemsRef.queryOrderedByKey()
-        // We save this as an instance variable so it doesn't get deallocated.
-        self.dataSource = self.tableView.bind(to: query) { tableView, indexPath, snapshot in
-            // Dequeue cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.poemTableCellReuseIdentifier, for: indexPath)
-            // Populate cell
-            let poemDict = snapshot.value as! NSDictionary
-            let poem = Poem(fromDictionary: poemDict)
-            if let cell = cell as? PoemCell {
-                cell.configureWithPoem(poem)
-            }
-            return cell
-        }
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
 
@@ -89,6 +81,27 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.size.width * 0.75
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.poems.count
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let poem = poems[indexPath.row]
+            poem.ref?.removeValue()
+            // We don't need to delete the poem from our local poems array
+            // Because the callback method defined in viewDidLoad will automatically synchronize it
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let poem = poems[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier) as! PoemCell
+        cell.configureWithPoem(poem)
+        cell.delegate = self
+        return cell
     }
 
     // MARK: PoemCellDelegate

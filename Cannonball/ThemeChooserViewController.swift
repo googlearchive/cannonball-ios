@@ -129,6 +129,7 @@ class ThemeChooserViewController: UITableViewController {
     }
 
     // Bring the about view when tapping the logo.
+    @objc
     func logoTapped() {
         performSegue(withIdentifier: "ShowAbout", sender: self)
     }
