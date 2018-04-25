@@ -237,22 +237,22 @@
                         <viewControllerLayoutGuide type="top" id="1vY-Oh-eSh"/>
                         <viewControllerLayoutGuide type="bottom" id="bb1-FW-h3R"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r9n-OK-HN6">
+                    <view key="view" contentMode="scaleAspectFit" id="r9n-OK-HN6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="749" image="Fabric" translatesAutoresizingMaskIntoConstraints="NO" id="021-ub-dBp">
-                                <rect key="frame" x="87.5" y="295" width="200" height="172"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="749" image="Firebase" translatesAutoresizingMaskIntoConstraints="NO" id="021-ub-dBp">
+                                <rect key="frame" x="87.5" y="276" width="200" height="200"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="fte-6x-rkU">
-                                <rect key="frame" x="16" y="96" width="343" height="134"/>
-                                <string key="text">Cannonball is the fun way to create and share stories and poems on your phone. Start with a beautiful image from the gallery, then choose words about #adventure, #romance, #nature or #mystery to complete the story and share it with friends. Browse top stories created by other users for inspiration.</string>
+                                <rect key="frame" x="16" y="96" width="343" height="115"/>
+                                <string key="text">Cannonball is the fun way to create and share stories and poems on your phone. Start with a beautiful image from the gallery, then choose words about #adventure, #romance, #nature or #mystery to complete the story and share it with friends.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="0.074509803920000006" green="0.59607843140000005" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cannonball was built with Fabric." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-7O-FCQ">
-                                <rect key="frame" x="16" y="262" width="343" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cannonball was built with Firebase." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-7O-FCQ">
+                                <rect key="frame" x="16" y="243" width="343" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="7Pt-Bl-9bY"/>
                                 </constraints>
@@ -276,9 +276,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnl-GV-vgG">
-                                <rect key="frame" x="79.5" y="475" width="216" height="100"/>
+                                <rect key="frame" x="58" y="484" width="259" height="91"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                <state key="normal" title="Learn more at t.co/cannonball">
+                                <state key="normal" title="github.com/Firebase/cannonball-ios">
                                     <color key="titleColor" red="0.27450980390000002" green="0.60392156860000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -508,7 +508,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Fabric" width="200" height="172"/>
+        <image name="Firebase" width="200" height="200"/>
         <image name="History" width="32" height="32"/>
         <image name="Logo" width="40" height="40"/>
         <image name="Phone" width="26" height="22"/>
