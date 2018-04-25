@@ -73,18 +73,15 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
         switch error {
         case .some(let error as NSError) where UInt(error.code) == FUIAuthErrorCode.userCancelledSignIn.rawValue:
             print("User cancelled sign-in")
-            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .some(let error as NSError) where error.userInfo[NSUnderlyingErrorKey] != nil:
             print("Login error: \(error.userInfo[NSUnderlyingErrorKey]!)")
-            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .some(let error):
             print("Login error: \(error.localizedDescription)")
-            Answers.logLogin(withMethod: "PhoneAuth", success: false, customAttributes: ["Error": error.localizedDescription as Any])
 
         case .none:
-            Answers.logLogin(withMethod: "PhoneAuth", success: true, customAttributes: ["User ID": user?.uid as Any])
+            Analytics.logEvent(AnalyticsEventLogin, parameters: [ "method": "phone"])
             Crashlytics.sharedInstance().setUserIdentifier(user?.uid)
             DispatchQueue.main.async {
                 // Navigate to the main app screen to select a theme.
@@ -99,9 +96,10 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
         Auth.auth().signInAnonymously() { (user, error) in
             self.authUI(anonAuthUI, didSignInWith: user, error: error)
         }
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Skipped Sign In", customAttributes: nil)
+        Analytics.logEvent(AnalyticsEventLogin, parameters: [ "method": "anonymous"])
+        
     }
+
 
     // MARK: Utilities
 

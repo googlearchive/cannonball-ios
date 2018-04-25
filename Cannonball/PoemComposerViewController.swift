@@ -60,8 +60,8 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         refreshWordBank()
         bankCollectionView.reloadData()
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Shuffled Words", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent("shuffle_words", parameters: nil)
     }
 
     // MARK: View Life Cycle
@@ -93,6 +93,8 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         countdownView.countdownTime = timeoutSeconds
 
         imageCarousel.delegate = self
+
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: [AnalyticsParameterItemCategory: theme.name])
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -118,17 +120,16 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
 
         if !(navigationController?.viewControllers)!.contains(self) {
             // Back was pressed because self is no longer in the navigation stack.
-            // Log Answers Custom Event.
-            Answers.logCustomEvent(withName: "Stopped Composing Poem",
-                customAttributes: [
-                    "Poem": poem.getSentence(),
-                    "Theme": theme.name,
-                    "Length": poem.words.count,
-                    "Picture": themePictures[imageCarousel.currentImageIndex]
-                ]
+            // Log Analytics custom event.
+            Analytics.logEvent("gave_up_building_poem", parameters:
+                    [
+                        AnalyticsParameterItemCategory: theme.name,
+                        "length": poem.words.count,
+                        "picture": themePictures[imageCarousel.currentImageIndex]
+                    ]
             )
         }
-
+        
         countdownView.stop()
 
         // Animate the countdown off screen.
@@ -159,13 +160,12 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         // Enhance Crashlytics reports with Advanced Custom Logging.
         CLSLogv("Finished Poem: %d words in theme %@ with picture %@.", getVaList([poem.words.count, poem.theme, poem.picture]))
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Finished Composing Poem",
-            customAttributes: [
-                "Poem": poem.getSentence(),
-                "Theme": poem.theme,
-                "Length": poem.words.count,
-                "Picture": poem.picture
+        // Log Analytics custom event.
+        Analytics.logEvent("save_poem", parameters:
+            [
+                AnalyticsParameterItemCategory: theme.name,
+                "length": poem.words.count,
+                "picture": themePictures[imageCarousel.currentImageIndex]
             ]
         )
     }

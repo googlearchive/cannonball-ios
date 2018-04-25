@@ -47,8 +47,9 @@ class AboutViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Viewed About", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent(AnalyticsEventSelectContent,
+                           parameters: [AnalyticsParameterItemID: "about"])
     }
 
     // MARK: IBActions
@@ -75,8 +76,8 @@ class AboutViewController: UIViewController {
         Crashlytics.sharedInstance().setUserIdentifier(nil)
         Crashlytics.sharedInstance().setUserName(nil)
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent("logout", parameters: nil)
 
         // Present the Sign In again.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

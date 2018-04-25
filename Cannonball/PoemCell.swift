@@ -28,6 +28,8 @@ class PoemCell: UITableViewCell {
 
     weak var delegate: PoemCellDelegate?
 
+    weak var poem: Poem?
+
     @IBOutlet fileprivate weak var pictureImageView: UIImageView!
 
     @IBOutlet fileprivate weak var themeLabel: UILabel!
@@ -64,6 +66,7 @@ class PoemCell: UITableViewCell {
         themeLabel.text = "#\(poem.theme)"
         poemLabel.text = poem.getSentence()
         pictureImageView.image = UIImage(named: poem.picture)
+        self.poem = poem
     }
 
     func capturePoemImage() -> UIImage {
