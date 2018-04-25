@@ -28,7 +28,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92A47B12199FCE4D00EDF6A8"
             BuildableName = "Cannonball.app"
-            BlueprintName = "Cannonball"
+            BlueprintName = "Cannonball Dev"
             ReferencedContainer = "container:Cannonball.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,7 +51,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92A47B12199FCE4D00EDF6A8"
             BuildableName = "Cannonball.app"
-            BlueprintName = "Cannonball"
+            BlueprintName = "Cannonball Dev"
             ReferencedContainer = "container:Cannonball.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

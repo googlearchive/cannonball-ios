@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Cannonball Dev</string>
+	<string>Cannonball</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.750427564739-70ouqb07oameo1r4a6p1gs9ajbo1fv0j</string>
+				<string>com.googleusercontent.apps.750427564739-q5m9586dkc0nfh6r70vfdh7gitdheoev</string>
 			</array>
 		</dict>
 	</array>
