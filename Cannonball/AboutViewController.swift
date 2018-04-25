@@ -79,9 +79,7 @@ class AboutViewController: UIViewController {
         Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
 
         // Present the Sign In again.
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInViewController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "SignInViewController") 
-        present(signInViewController, animated: true, completion: nil)
+        navigationController!.popToRootViewController(animated: true)
     }
 
 }

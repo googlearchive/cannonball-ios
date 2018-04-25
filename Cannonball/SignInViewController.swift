@@ -55,10 +55,6 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
         signInPhoneButton.setImage(image, for: UIControlState())
     }
 
-    fileprivate func navigateToMainAppScreen() {
-        performSegue(withIdentifier: "ShowThemeChooser", sender: self)
-    }
-
     // MARK: IBActions
 
 
@@ -88,9 +84,8 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
             Crashlytics.sharedInstance().setUserIdentifier(user?.uid)
             DispatchQueue.main.async {
                 // Navigate to the main app screen to select a theme.
-                self.navigateToMainAppScreen()
+                self.performSegue(withIdentifier: "ShowThemeChooser", sender: self)
             }
-            return
         }
     }
 
