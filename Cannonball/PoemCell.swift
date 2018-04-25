@@ -82,6 +82,7 @@ class PoemCell: UITableViewCell {
         return containerViewImage!
     }
 
+    @objc
     func shareButtonTapped() {
         delegate?.poemCellWantsToSharePoem(self)
     }

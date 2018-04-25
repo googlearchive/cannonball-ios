@@ -15,6 +15,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 open class Poem {
 
@@ -43,24 +44,30 @@ open class Poem {
     // The date a poem is completed.
     open var timestamp = -1
 
+    // This poem's node in a Firebase database
+    open var ref : DatabaseReference?
+
     // Initialize a Poem instance will all its properties, including a UUID.
     // Includes default parameters for creating an empty poem.
-    init(words: [String] = [], picture: String = "", theme: String = "", timestamp: Int = -1) {
+    init(words: [String] = [], picture: String = "", theme: String = "", timestamp: Int = -1, ref : DatabaseReference? = nil) {
         self.words = words
         self.picture = picture
         self.theme = theme
         self.timestamp = timestamp
+        self.ref = ref
     }
 
-    // Initialize a Poem from an NSDictionary, most likely returned by Firebase RTDB.
-    convenience init(fromDictionary poemDict : NSDictionary) {
+    // Initialize a Poem from a Firebase database snapshot
+    convenience init(fromSnapshot snap : DataSnapshot) {
+
+        let poemDict = snap.value as! [String : AnyObject]
         let text = poemDict[SerializationKeys.text] as! String
         let words = text.components(separatedBy: " ")
-        let picture = poemDict[SerializationKeys.picture]
-        let theme = poemDict[SerializationKeys.theme]
-        let timestamp = poemDict[SerializationKeys.timestamp]
+        let picture = poemDict[SerializationKeys.picture] as! String
+        let theme = poemDict[SerializationKeys.theme] as! String
+        let timestamp = poemDict[SerializationKeys.timestamp] as! Int
 
-        self.init( words : words, picture : picture as! String, theme : theme as! String, timestamp: timestamp as! Int)
+        self.init( words : words, picture : picture, theme : theme, timestamp: timestamp, ref : snap.ref)
     }
 
     // Retrieve the poem words as one sentence.
