@@ -17,6 +17,7 @@
 import UIKit
 import QuartzCore
 import Crashlytics
+import Firebase
 
 class ThemeChooserViewController: UITableViewController {
 
@@ -122,8 +123,9 @@ class ThemeChooserViewController: UITableViewController {
                 // Tie this selected theme to any crashes in Crashlytics.
                 Crashlytics.sharedInstance().setObjectValue(themes[row].name, forKey: "Theme")
 
-                // Log Answers Custom Event.
-                Answers.logCustomEvent(withName: "Selected Theme", customAttributes: ["Theme": themes[row].name])
+                // Log Analytics custom event.
+                Analytics.logEvent("select_theme", parameters: ["theme": themes[row].name])
+
             }
         }
     }

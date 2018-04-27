@@ -41,8 +41,9 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
             self.tableView.reloadData()
         })
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent(AnalyticsEventViewItemList,
+                           parameters: [AnalyticsParameterItemCategory: "history"])
 
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
@@ -90,6 +91,8 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let poem = poems[indexPath.row]
+            Analytics.logEvent(AnalyticsParameterItemCategory,
+                               parameters: [AnalyticsParameterItemCategory: poem.theme])
             poem.ref?.removeValue()
             // We don't need to delete the poem from our local poems array
             // Because the callback method defined in viewDidLoad will automatically synchronize it
@@ -110,7 +113,14 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
         // Generate the image of the poem.
         let poemImage = poemCell.capturePoemImage()
+        let poem = poemCell.poem!
 
+        Analytics.logEvent(AnalyticsEventShare,
+                           parameters: [AnalyticsParameterContentType: "poem_image",
+                                        AnalyticsParameterItemCategory: poem.theme,
+                                        "method": "native_share",
+                                        "length": poem.words.count,
+                                        "picture": poem.picture])
         let activityViewController = UIActivityViewController(activityItems: [poemImage], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
