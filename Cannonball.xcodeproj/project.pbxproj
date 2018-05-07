@@ -40,18 +40,20 @@
 		95B237E1208E3CA60025BEA7 /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E857019A012BE008801A3 /* Poem.swift */; };
 		95B237E4208E3CA60025BEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A47B1C199FCE4D00EDF6A8 /* Main.storyboard */; };
 		95B237E5208E3CA60025BEA7 /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = D18FAC0419A0FC0100CFAF83 /* Themes.json */; };
-		95B237E6208E3CA60025BEA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8B68BC8206D5D49000E3FE3 /* GoogleService-Info.plist */; };
 		95B237E7208E3CA60025BEA7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9533CDD7204A0D7100F79211 /* Podfile */; };
 		95B237E8208E3CA60025BEA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A47B1F199FCE4D00EDF6A8 /* Images.xcassets */; };
 		95B237F2208E3CF90025BEA7 /* Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95B237F1208E3CF90025BEA7 /* Prod-Info.plist */; };
+		9C40C3B8D061C3F2DDBDAE44 /* Pods_Cannonball_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */; };
+		BDED560D58A2DF6FA191EA80 /* Pods_Cannonball_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */; };
 		BF6BE6A619F5CB870039073B /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE6A519F5CB870039073B /* ImageCarouselView.swift */; };
 		BF6BE6AB19F5CE070039073B /* ImageCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE6AA19F5CE070039073B /* ImageCarouselCollectionViewCell.swift */; };
 		D18FAC0519A0FC0100CFAF83 /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = D18FAC0419A0FC0100CFAF83 /* Themes.json */; };
-		D8B68BC9206D5D4A000E3FE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8B68BC8206D5D49000E3FE3 /* GoogleService-Info.plist */; };
+		D8CE111420A0A61900EA903F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8CE111320A0A61900EA903F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17EB4F5254B0DA151867866C /* Pods-Cannonball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball.release.xcconfig"; sourceTree = "<group>"; };
+		1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841543FA004B54E2D80DFCA7 /* Pods-Cannonball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball.debug.xcconfig"; sourceTree = "<group>"; };
 		920430D919CB574200BB6BEC /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		920C15D419F19D4E008E344C /* ColorConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorConstants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -74,10 +76,15 @@
 		9533CDD7204A0D7100F79211 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95B237EF208E3CA60025BEA7 /* Cannonball Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cannonball Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95B237F1208E3CF90025BEA7 /* Prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Prod-Info.plist"; sourceTree = "<group>"; };
+		A79DEBCA60136A36EB864869 /* Pods-Cannonball Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod.debug.xcconfig"; sourceTree = "<group>"; };
+		B47BA4969CF8C0350BCE7052 /* Pods-Cannonball Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		BF6BE6A519F5CB870039073B /* ImageCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselView.swift; sourceTree = "<group>"; };
 		BF6BE6AA19F5CE070039073B /* ImageCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		C139C4178F4CD0C9E908B774 /* Pods-Cannonball Prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Prod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod.release.xcconfig"; sourceTree = "<group>"; };
 		D18FAC0419A0FC0100CFAF83 /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
-		D8B68BC8206D5D49000E3FE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8CE111320A0A61900EA903F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F419815049710700D8C17AB0 /* Pods-Cannonball Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev.release.xcconfig"; sourceTree = "<group>"; };
+		FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDED560D58A2DF6FA191EA80 /* Pods_Cannonball_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C40C3B8D061C3F2DDBDAE44 /* Pods_Cannonball_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +152,7 @@
 		92A47B0A199FCE4D00EDF6A8 = {
 			isa = PBXGroup;
 			children = (
-				D8B68BC8206D5D49000E3FE3 /* GoogleService-Info.plist */,
+				D8CE111320A0A61900EA903F /* GoogleService-Info.plist */,
 				9533CDD7204A0D7100F79211 /* Podfile */,
 				92A47B15199FCE4D00EDF6A8 /* Cannonball */,
 				92A47B14199FCE4D00EDF6A8 /* Products */,
@@ -190,6 +199,8 @@
 		9B16E087AA21F645068E99AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */,
+				FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,6 +210,10 @@
 			children = (
 				841543FA004B54E2D80DFCA7 /* Pods-Cannonball.debug.xcconfig */,
 				17EB4F5254B0DA151867866C /* Pods-Cannonball.release.xcconfig */,
+				B47BA4969CF8C0350BCE7052 /* Pods-Cannonball Dev.debug.xcconfig */,
+				F419815049710700D8C17AB0 /* Pods-Cannonball Dev.release.xcconfig */,
+				A79DEBCA60136A36EB864869 /* Pods-Cannonball Prod.debug.xcconfig */,
+				C139C4178F4CD0C9E908B774 /* Pods-Cannonball Prod.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -273,6 +288,10 @@
 							};
 						};
 					};
+					95B237D0208E3CA60025BEA7 = {
+						DevelopmentTeam = EQHXZ8M8AV;
+						ProvisioningStyle = Manual;
+					};
 				};
 			};
 			buildConfigurationList = 92A47B0E199FCE4D00EDF6A8 /* Build configuration list for PBXProject "Cannonball" */;
@@ -301,9 +320,9 @@
 			files = (
 				92A47B1E199FCE4D00EDF6A8 /* Main.storyboard in Resources */,
 				D18FAC0519A0FC0100CFAF83 /* Themes.json in Resources */,
-				D8B68BC9206D5D4A000E3FE3 /* GoogleService-Info.plist in Resources */,
 				9533CDD8204A0D7100F79211 /* Podfile in Resources */,
 				92A47B20199FCE4D00EDF6A8 /* Images.xcassets in Resources */,
+				D8CE111420A0A61900EA903F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +332,6 @@
 			files = (
 				95B237E4208E3CA60025BEA7 /* Main.storyboard in Resources */,
 				95B237E5208E3CA60025BEA7 /* Themes.json in Resources */,
-				95B237E6208E3CA60025BEA7 /* GoogleService-Info.plist in Resources */,
 				95B237F2208E3CF90025BEA7 /* Prod-Info.plist in Resources */,
 				95B237E7208E3CA60025BEA7 /* Podfile in Resources */,
 				95B237E8208E3CA60025BEA7 /* Images.xcassets in Resources */,
@@ -334,7 +352,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Cannonball-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Cannonball Prod-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -347,7 +365,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -362,7 +380,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		95B237EA208E3CA60025BEA7 /* [CP] Copy Pods Resources */ = {
@@ -371,7 +389,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 			);
@@ -382,7 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		95B237EB208E3CA60025BEA7 /* Firebase Crashlytics */ = {
@@ -405,7 +423,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 			);
@@ -416,7 +434,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AC3B9FE788528AAF9D9FD73D /* [CP] Check Pods Manifest.lock */ = {
@@ -430,7 +448,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Cannonball-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Cannonball Dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -443,7 +461,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -458,7 +476,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball/Pods-Cannonball-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D8B68BC5206D5BF5000E3FE3 /* Firebase Crashlytics */ = {
@@ -623,7 +641,7 @@
 		};
 		92A47B30199FCE4E00EDF6A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 841543FA004B54E2D80DFCA7 /* Pods-Cannonball.debug.xcconfig */;
+			baseConfigurationReference = B47BA4969CF8C0350BCE7052 /* Pods-Cannonball Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -650,7 +668,7 @@
 		};
 		92A47B31199FCE4E00EDF6A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17EB4F5254B0DA151867866C /* Pods-Cannonball.release.xcconfig */;
+			baseConfigurationReference = F419815049710700D8C17AB0 /* Pods-Cannonball Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -677,7 +695,7 @@
 		};
 		95B237ED208E3CA60025BEA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 841543FA004B54E2D80DFCA7 /* Pods-Cannonball.debug.xcconfig */;
+			baseConfigurationReference = A79DEBCA60136A36EB864869 /* Pods-Cannonball Prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -704,7 +722,7 @@
 		};
 		95B237EE208E3CA60025BEA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17EB4F5254B0DA151867866C /* Pods-Cannonball.release.xcconfig */;
+			baseConfigurationReference = C139C4178F4CD0C9E908B774 /* Pods-Cannonball Prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

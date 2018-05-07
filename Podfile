@@ -1,8 +1,9 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 
-target 'Cannonball' do
-    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
+
+def cannonball_pods
     use_frameworks!
 
     # Pods for Cannonball
@@ -15,4 +16,12 @@ target 'Cannonball' do
 
     pod 'Fabric', '~> 1.7.6'
     pod 'Crashlytics', '~> 3.10.1'
+end
+
+target 'Cannonball Dev' do
+    cannonball_pods
+end
+
+target 'Cannonball Prod' do
+    cannonball_pods
 end
