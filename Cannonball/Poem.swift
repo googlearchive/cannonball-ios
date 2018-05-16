@@ -27,7 +27,8 @@ open class Poem {
         static let text : String = "text"
         static let picture : String = "imageId"
         static let theme : String = "theme"
-        static let timestamp : String = "timestamp"
+        static let timestamp : String = "creationTimeStamp"
+        static let inverseTimestamp : String = "inverseCreationTimeStamp"
     }
 
     // MARK: Instance variables
@@ -82,6 +83,7 @@ open class Poem {
             SerializationKeys.picture: picture,
             SerializationKeys.theme: theme,
             SerializationKeys.timestamp: timestamp,
+            SerializationKeys.inverseTimestamp: timestamp * (-1)
         ]
         return data;
     }

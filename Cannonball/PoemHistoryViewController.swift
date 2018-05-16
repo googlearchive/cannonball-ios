@@ -30,7 +30,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Database.database().reference().child(Auth.auth().currentUser!.uid).observe(.value, with: { snapshot in
+        Database.database().reference().child(Auth.auth().currentUser!.uid).queryOrdered(byChild: Poem.SerializationKeys.inverseTimestamp).observe(.value, with: { snapshot in
             var newPoems: [Poem] = []
             for item in snapshot.children {
                 let poem = Poem(fromSnapshot: item as! DataSnapshot)
