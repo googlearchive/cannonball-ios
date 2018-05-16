@@ -17,7 +17,7 @@ Cannonball uses many of the features available in Firebase, including Realtime D
 
 ### Prerequisites
 
-* Xcode 8.3 or later (https://developer.apple.com/xcode/downloads/)
+* Xcode 9 or later (https://developer.apple.com/xcode/downloads/)
 * CocoaPods 1.2.1 or later (https://guides.cocoapods.org/using/getting-started.html)
 
 To get started and run the app, you need to follow these simple steps:
@@ -33,7 +33,7 @@ To get started and run the app, you need to follow these simple steps:
 
 ## Compatibility
 
-This project is written in Swift 3, which requires Xcode 8 or later to run.
+This project is written in Swift 4.1, which requires Xcode 9 or later to run.
 
 Cannonball for iOS is compatible with iOS 8+.
 
