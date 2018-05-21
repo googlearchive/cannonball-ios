@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ class PoemTimelineViewController: TWTRTimelineViewController {
             UIView.animate(withDuration: 0.15, animations: {
                 self.tableView.backgroundView!.isHidden = false
                 self.tableView.backgroundView!.alpha = 1
-            }) 
+            })
         } else {
             UIView.animate(withDuration: 0.15,
                 animations: {

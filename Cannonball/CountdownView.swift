@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ class CountdownView : UIView {
         }
     }
 
-    func tick() {
+    @objc func tick() {
         secondsRemaining -= displayLink!.duration
     }
 
@@ -101,8 +101,8 @@ class CountdownView : UIView {
         // Define the path for the circle strokes.
         let arcCenter = CGPoint(x: bounds.width / 2, y: bounds.width / 2)
         let radius: CGFloat = bounds.width / 2
-        let startAngle = CGFloat(-0.5 * M_PI)
-        let endAngle = CGFloat(1.5 * M_PI)
+        let startAngle = CGFloat(-0.5 * .pi)
+        let endAngle = CGFloat(1.5 * .pi)
         let path = UIBezierPath(arcCenter: arcCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
 
         // Define the background circle.

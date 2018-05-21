@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,8 +42,8 @@ class AboutViewController: UIViewController {
         navigationController?.view.bringSubview(toFront: logoView)
 
         // Customize the navigation bar.
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.cannonballGreenColor()]
-        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.cannonballGreenColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : Any]
         navigationController?.navigationBar.tintColor = UIColor.cannonballGreenColor()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -79,7 +79,7 @@ class AboutViewController: UIViewController {
 
         // Present the Sign In again.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInViewController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "SignInViewController") 
+        let signInViewController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         present(signInViewController, animated: true, completion: nil)
     }
 

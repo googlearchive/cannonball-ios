@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,8 +67,8 @@ class ThemeChooserViewController: UITableViewController {
         tableView.rowHeight = themeTableCellHeight
 
         // Customize the navigation bar.
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.cannonballGreenColor()]
-        navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        let titleDict: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.cannonballGreenColor()]
+        navigationController?.navigationBar.titleTextAttributes = titleDict as? [NSAttributedStringKey : Any]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.topItem?.title = ""
@@ -130,6 +130,7 @@ class ThemeChooserViewController: UITableViewController {
     }
 
     // Bring the about view when tapping the logo.
+    @objc
     func logoTapped() {
         performSegue(withIdentifier: "ShowAbout", sender: self)
     }

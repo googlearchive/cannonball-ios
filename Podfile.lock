@@ -1,0 +1,28 @@
+PODS:
+  - Crashlytics (3.7.3):
+    - Fabric (~> 1.6.3)
+  - Digits (2.0.2):
+    - TwitterCore (= 2.0.2)
+  - Fabric (1.6.13)
+  - TwitterCore (2.0.2):
+    - Fabric
+  - TwitterKit (2.0.2):
+    - TwitterCore (= 2.0.2)
+
+DEPENDENCIES:
+  - Crashlytics (~> 3.7.0)
+  - Digits (~> 2.0.2)
+  - Fabric (~> 1.6.7)
+  - TwitterCore (~> 2.0.2)
+  - TwitterKit (~> 2.0.2)
+
+SPEC CHECKSUMS:
+  Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
+  Digits: a5c8ddfed18d5e0496e9b6f459f0bca44de588db
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  TwitterCore: 0f44d8980a6879d5205dcb4e010d15e643e56fa0
+  TwitterKit: c4e40f289a3d7cc9fab9f241edd7502385468b65
+
+PODFILE CHECKSUM: 614e14d14fc399602d3092996ad476e9c237943a
+
+COCOAPODS: 1.4.0

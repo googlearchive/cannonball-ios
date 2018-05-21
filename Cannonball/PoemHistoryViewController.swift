@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,18 +17,12 @@
 import UIKit
 import TwitterKit
 import Crashlytics
-import MoPub
-
-// Set your MoPub Ad Unit ID just below to display MoPub Native Ads.
-let MoPubAdUnitID = ""
 
 class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     // MARK: Properties
 
     fileprivate let poemTableCellReuseIdentifier = "PoemCell"
-
-    var placer: MPTableViewAdPlacer!
 
     var poems: [Poem] = []
 
@@ -39,30 +33,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
         // Log Answers Custom Event.
         Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
-
-        // Create the Static Native Ad renderer configuration.
-        let staticSettings = MPStaticNativeAdRendererSettings()
-        staticSettings.renderingViewClass = NativeAdCell.self
-        staticSettings.viewSizeHandler = { (maxWidth: CGFloat) -> CGSize in
-            return CGSize(width: maxWidth, height: maxWidth)
-        }
-        let staticConfiguration = MPStaticNativeAdRenderer.rendererConfiguration(with: staticSettings)
-
-        // Create the Native Video Ad renderer configuration.
-        let videoSettings = MOPUBNativeVideoAdRendererSettings()
-        videoSettings.renderingViewClass = staticSettings.renderingViewClass
-        videoSettings.viewSizeHandler = staticSettings.viewSizeHandler
-        let videoConfiguration = MOPUBNativeVideoAdRenderer.rendererConfiguration(with: videoSettings)
-
-        // Setup the ad placer.
-        placer = MPTableViewAdPlacer(tableView: tableView, viewController: self, rendererConfigurations: [staticConfiguration as Any, videoConfiguration as Any])
-
-        // Add targeting parameters.
-        let targeting = MPNativeAdRequestTargeting()
-        targeting.desiredAssets = Set([kAdIconImageKey, kAdMainImageKey, kAdCTATextKey, kAdTextKey, kAdTitleKey])
-
-        // Begin loading ads and placing them into your feed, using the ad unit ID.
-        placer.loadAds(forAdUnitID: MoPubAdUnitID)
 
         // Retrieve the poems.
         poems = PoemPersistence.sharedInstance.retrievePoems()
@@ -107,8 +77,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Use the MoPub-specific version of the table view method.
-        let cell = tableView.mp_dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier, for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier, for: indexPath) as! UITableViewCell
 
         if let poemCell = cell as? PoemCell {
             poemCell.delegate = self
@@ -126,7 +95,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
             // Remove the poem and reload the table view.
             poems = poems.filter( { $0 != poem })
-            tableView.mp_deleteRows(atIndexPaths: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
 
             // Display the no poems label if this was the last poem.
             toggleNoPoemsLabel()
@@ -149,7 +118,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     func poemCellWantsToSharePoem(_ poemCell: PoemCell) {
         // Find the poem displayed at this index path.
-        let indexPath = tableView.mp_indexPath(for: poemCell)
+        let indexPath = tableView.indexPath(for: poemCell)
         let poem = poems[(indexPath?.row)!]
 
         // Generate the image of the poem.
@@ -195,7 +164,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
             UIView.animate(withDuration: 0.15, animations: {
                 self.tableView.backgroundView!.isHidden = false
                 self.tableView.backgroundView!.alpha = 1
-            }) 
+            })
         } else {
             UIView.animate(withDuration: 0.15,
                 animations: {

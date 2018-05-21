@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ open class Theme {
         let path = Bundle.main.path(forResource: "Themes", ofType: "json")!
         if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
            let jsonArray = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? [AnyObject] {
-            themes = jsonArray.flatMap() {
+            themes = jsonArray.compactMap() {
                 return Theme(jsonDictionary: $0 as! [String : AnyObject])
             }
         }

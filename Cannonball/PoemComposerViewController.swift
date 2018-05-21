@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017 Google, Inc. and other contributors.
+// Copyright (C) 2018 Google, Inc. and other contributors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -312,14 +312,14 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
     // MARK: UICollectionView Utilities
 
     func sizeForWord(_ word: String) -> CGSize {
-        return CGSize(width: 18 + word.characters.count * 10, height: 32)
+        return CGSize(width: 18 + word.count * 10, height: 32)
     }
 
     func resizePoemToFitContentSize() {
         UIView.animate(withDuration: 0.15, animations: {
             self.poemHeightContraint.constant = self.poemCollectionView.contentSize.height
             self.view.layoutIfNeeded()
-        }) 
+        })
     }
 
     func savePoem() {
@@ -354,7 +354,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
                             cell.isHidden = false
                             UIView.animate(withDuration: 0.15, animations: {
                                 cell.alpha = 1
-                            }) 
+                            })
                             // Return since we found it.
                             return
                         }
@@ -388,7 +388,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
                 cell.alpha = 0
                 UIView.animate(withDuration: 0.15, animations: {
                     cell.alpha = 1
-                }) 
+                })
             }
         }
     }
