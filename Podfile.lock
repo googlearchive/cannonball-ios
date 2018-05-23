@@ -1,28 +1,75 @@
 PODS:
-  - Crashlytics (3.7.3):
-    - Fabric (~> 1.6.3)
-  - Digits (2.0.2):
-    - TwitterCore (= 2.0.2)
-  - Fabric (1.6.13)
-  - TwitterCore (2.0.2):
-    - Fabric
-  - TwitterKit (2.0.2):
-    - TwitterCore (= 2.0.2)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
+  - Fabric (1.7.7)
+  - Firebase/Auth (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.0.0)
+  - Firebase/Core (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.1.0):
+    - FirebaseCore (= 5.0.2)
+  - Firebase/Database (5.1.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (= 5.0.1)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseAuth (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (5.0.2):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseDatabase (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseUI/Auth (5.0.0):
+    - Firebase/Auth (~> 5.0)
+  - FirebaseUI/Database (5.0.0):
+    - Firebase/Database (~> 5.0)
+  - FirebaseUI/Phone (5.0.0):
+    - FirebaseUI/Auth
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GTMSessionFetcher/Core (1.1.15)
+  - leveldb-library (1.20)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.7.0)
-  - Digits (~> 2.0.2)
-  - Fabric (~> 1.6.7)
-  - TwitterCore (~> 2.0.2)
-  - TwitterKit (~> 2.0.2)
+  - Crashlytics
+  - Fabric
+  - Firebase/Auth
+  - Firebase/Core
+  - Firebase/Database
+  - FirebaseUI/Auth
+  - FirebaseUI/Database
+  - FirebaseUI/Phone
 
 SPEC CHECKSUMS:
-  Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
-  Digits: a5c8ddfed18d5e0496e9b6f459f0bca44de588db
-  Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  TwitterCore: 0f44d8980a6879d5205dcb4e010d15e643e56fa0
-  TwitterKit: c4e40f289a3d7cc9fab9f241edd7502385468b65
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
+  Firebase: e08fb0795f35707aeb1d8a715c731c45bdf6fd56
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseAuth: acbeef02fe7c3a26624e309849f3fe30c84115af
+  FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
+  FirebaseDatabase: 482bad9c2abd422bb2321194fb8c937e67426a89
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseUI: 0e9ab15e00073e421890c755b6f2bd757605601f
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 614e14d14fc399602d3092996ad476e9c237943a
+PODFILE CHECKSUM: 7c9bf4500a4d1fd9af56b29115132278e41299bb
 
 COCOAPODS: 1.4.0

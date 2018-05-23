@@ -17,8 +17,8 @@
 import UIKit
 import Fabric
 import Crashlytics
-import TwitterKit
-import DigitsKit
+import Firebase
+import FirebaseUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,21 +26,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Developers: Welcome! Get started with Fabric.app.
-        let welcome = "Welcome to Cannonball! Please onboard with the Fabric Mac app. Check the instructions in the README file."
-        assert(Bundle.main.object(forInfoDictionaryKey: "Fabric") != nil, welcome)
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
 
-        // Register Crashlytics, Twitter, Digits and MoPub with Fabric.
-        Fabric.with([Crashlytics.self, Twitter.self, Digits.self])
-
-        // Check for an existing Twitter or Digits session before presenting the sign in screen.
-        if Twitter.sharedInstance().sessionStore.session() == nil && Digits.sharedInstance().session() == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signInViewController: AnyObject! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-            window?.rootViewController = signInViewController as? UIViewController
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let signInViewController: AnyObject! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+                self.window?.rootViewController = signInViewController as? UIViewController
+            }
+            else{
+                let myPoemsRef = Database.database().reference().child(user!.uid)
+                myPoemsRef.keepSynced(true)
+            }
         }
+        return true;
+    }
 
-        return true
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?
+        return self.handleOpenUrl(url, sourceApplication: sourceApplication)
+    }
+
+    @available(iOS 8.0, *)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return self.handleOpenUrl(url, sourceApplication: sourceApplication)
+    }
+
+
+    func handleOpenUrl(_ url: URL, sourceApplication: String?) -> Bool {
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
+        // other URL handling goes here.
+        return false
     }
 
 }
+

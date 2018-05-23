@@ -15,19 +15,23 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-open class Poem: NSObject, NSCoding {
+open class Poem {
 
     // MARK: Types
 
     // String constants used to archive the stored properties of a poem.
-    fileprivate struct SerializationKeys {
-        static let words = "words"
-        static let picture = "picture"
-        static let theme = "theme"
-        static let date = "date"
-        static let uuid = "uuid"
+    struct SerializationKeys {
+        // A String (not an array of such) used by Firebase RTDB.
+        static let text : String = "text"
+        static let picture : String = "imageId"
+        static let theme : String = "theme"
+        static let timestamp : String = "creationTimeStamp"
+        static let inverseTimestamp : String = "inverseCreationTimeStamp"
     }
+
+    // MARK: Instance variables
 
     // The words composing a poem.
     open var words: [String] = []
@@ -39,29 +43,32 @@ open class Poem: NSObject, NSCoding {
     open var theme: String = ""
 
     // The date a poem is completed.
-    open var date = Date()
+    open var timestamp = -1
 
-    // An underlying identifier for each poem.
-    open fileprivate(set) var UUID = Foundation.UUID()
-
-    // MARK: Initialization
-
-    override init() {
-        super.init()
-    }
+    // This poem's node in a Firebase database
+    open var ref : DatabaseReference?
 
     // Initialize a Poem instance will all its properties, including a UUID.
-    fileprivate init(words: [String], picture: String, theme: String, date: Date, UUID: Foundation.UUID) {
+    // Includes default parameters for creating an empty poem.
+    init(words: [String] = [], picture: String = "", theme: String = "", timestamp: Int = -1, ref : DatabaseReference? = nil) {
         self.words = words
         self.picture = picture
         self.theme = theme
-        self.date = date
-        self.UUID = UUID
+        self.timestamp = timestamp
+        self.ref = ref
     }
 
-    // Initialize a Poem instance with all its public properties.
-    convenience init(words: [String], picture: String, theme: String, date: Date) {
-        self.init(words: words, picture: picture, theme: theme, date: date, UUID: Foundation.UUID())
+    // Initialize a Poem from a Firebase database snapshot
+    convenience init(fromSnapshot snap : DataSnapshot) {
+
+        let poemDict = snap.value as! [String : AnyObject]
+        let text = poemDict[SerializationKeys.text] as! String
+        let words = text.components(separatedBy: " ")
+        let picture = poemDict[SerializationKeys.picture] as! String
+        let theme = poemDict[SerializationKeys.theme] as! String
+        let timestamp = poemDict[SerializationKeys.timestamp] as! Int
+
+        self.init( words : words, picture : picture, theme : theme, timestamp: timestamp, ref : snap.ref)
     }
 
     // Retrieve the poem words as one sentence.
@@ -69,33 +76,15 @@ open class Poem: NSObject, NSCoding {
         return words.joined(separator: " ")
     }
 
-    // MARK: NSCoding
-
-    required public init?(coder aDecoder: NSCoder) {
-        words = aDecoder.decodeObject(forKey: SerializationKeys.words) as! [String]
-        picture = aDecoder.decodeObject(forKey: SerializationKeys.picture) as! String
-        theme = aDecoder.decodeObject(forKey: SerializationKeys.theme) as! String
-        date = aDecoder.decodeObject(forKey: SerializationKeys.date) as! Date
-        UUID = aDecoder.decodeObject(forKey: SerializationKeys.uuid) as! Foundation.UUID
+    // Encode the poem as an NSDictionary usable by Firebase RTDB.
+    open func encode() -> NSDictionary {
+        let data : NSDictionary = [
+            SerializationKeys.text: getSentence(),
+            SerializationKeys.picture: picture,
+            SerializationKeys.theme: theme,
+            SerializationKeys.timestamp: timestamp,
+            SerializationKeys.inverseTimestamp: timestamp * (-1)
+        ]
+        return data;
     }
-
-    open func encode(with aCoder: NSCoder) {
-        aCoder.encode(words, forKey: SerializationKeys.words)
-        aCoder.encode(picture, forKey: SerializationKeys.picture)
-        aCoder.encode(theme, forKey: SerializationKeys.theme)
-        aCoder.encode(date, forKey: SerializationKeys.date)
-        aCoder.encode(UUID, forKey: SerializationKeys.uuid)
-    }
-
-    // MARK: Overrides
-
-    // Two poems are equal only if their UUIDs match.
-    override open func isEqual(_ object: Any?) -> Bool {
-        if let poem = object as? Poem {
-            return UUID == poem.UUID
-        }
-
-        return false
-    }
-
 }

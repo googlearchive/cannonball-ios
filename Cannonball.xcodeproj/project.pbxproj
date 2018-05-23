@@ -23,9 +23,6 @@
 		92C54BE019BE2981008AF372 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C54BDF19BE2981008AF372 /* CountdownView.swift */; };
 		92F79C7919DEC378002F9484 /* PoemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F79C7819DEC378002F9484 /* PoemCell.swift */; };
 		9533CDD8204A0D7100F79211 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9533CDD7204A0D7100F79211 /* Podfile */; };
-		959DB95420B34D3E00B541FA /* PoemTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959DB95320B34D3E00B541FA /* PoemTimelineViewController.swift */; };
-		959DB95620B34D4A00B541FA /* PoemPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959DB95520B34D4900B541FA /* PoemPersistence.swift */; };
-		959DB95820B351DC00B541FA /* PoemPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959DB95520B34D4900B541FA /* PoemPersistence.swift */; };
 		95B237D3208E3CA60025BEA7 /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921E857219A0175F008801A3 /* ThemeChooserViewController.swift */; };
 		95B237D4208E3CA60025BEA7 /* ImageCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE6AA19F5CE070039073B /* ImageCarouselCollectionViewCell.swift */; };
 		95B237D5208E3CA60025BEA7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AFFC5019EC82B7008297D2 /* AboutViewController.swift */; };
@@ -45,18 +42,16 @@
 		95B237E5208E3CA60025BEA7 /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = D18FAC0419A0FC0100CFAF83 /* Themes.json */; };
 		95B237E7208E3CA60025BEA7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9533CDD7204A0D7100F79211 /* Podfile */; };
 		95B237E8208E3CA60025BEA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A47B1F199FCE4D00EDF6A8 /* Images.xcassets */; };
-		95B237F2208E3CF90025BEA7 /* Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95B237F1208E3CF90025BEA7 /* Prod-Info.plist */; };
+		9C40C3B8D061C3F2DDBDAE44 /* Pods_Cannonball_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */; };
+		BDED560D58A2DF6FA191EA80 /* Pods_Cannonball_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */; };
 		BF6BE6A619F5CB870039073B /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE6A519F5CB870039073B /* ImageCarouselView.swift */; };
 		BF6BE6AB19F5CE070039073B /* ImageCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE6AA19F5CE070039073B /* ImageCarouselCollectionViewCell.swift */; };
-		CC73CB209D2F507FFCA8D699 /* Pods_Cannonball_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7D8EE0648EC57D72018718 /* Pods_Cannonball_Dev.framework */; };
 		D18FAC0519A0FC0100CFAF83 /* Themes.json in Resources */ = {isa = PBXBuildFile; fileRef = D18FAC0419A0FC0100CFAF83 /* Themes.json */; };
 		D8CE111420A0A61900EA903F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8CE111320A0A61900EA903F /* GoogleService-Info.plist */; };
-		F9A565FA3E93E43CD9BE4458 /* Pods_Cannonball_Prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F49C1369695CD65C84EB59 /* Pods_Cannonball_Prod.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A7D8EE0648EC57D72018718 /* Pods_Cannonball_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		62F49C1369695CD65C84EB59 /* Pods_Cannonball_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		920430D919CB574200BB6BEC /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		920C15D419F19D4E008E344C /* ColorConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorConstants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		921E856D19A00B95008801A3 /* ThemeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
@@ -76,8 +71,6 @@
 		92F79C7819DEC378002F9484 /* PoemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoemCell.swift; sourceTree = "<group>"; };
 		95104A43204A16A900D84372 /* Cannonball.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cannonball.entitlements; sourceTree = "<group>"; };
 		9533CDD7204A0D7100F79211 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		959DB95320B34D3E00B541FA /* PoemTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoemTimelineViewController.swift; sourceTree = "<group>"; };
-		959DB95520B34D4900B541FA /* PoemPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoemPersistence.swift; sourceTree = "<group>"; };
 		95B237EF208E3CA60025BEA7 /* Cannonball Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cannonball Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95B237F1208E3CF90025BEA7 /* Prod-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Prod-Info.plist"; sourceTree = "<group>"; };
 		A79DEBCA60136A36EB864869 /* Pods-Cannonball Prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Prod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +81,7 @@
 		D18FAC0419A0FC0100CFAF83 /* Themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Themes.json; sourceTree = "<group>"; };
 		D8CE111320A0A61900EA903F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F419815049710700D8C17AB0 /* Pods-Cannonball Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cannonball Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev.release.xcconfig"; sourceTree = "<group>"; };
+		FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cannonball_Prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC73CB209D2F507FFCA8D699 /* Pods_Cannonball_Dev.framework in Frameworks */,
+				BDED560D58A2DF6FA191EA80 /* Pods_Cannonball_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,22 +97,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9A565FA3E93E43CD9BE4458 /* Pods_Cannonball_Prod.framework in Frameworks */,
+				9C40C3B8D061C3F2DDBDAE44 /* Pods_Cannonball_Prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		60F7B377EE964CF9C36CE3F7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1A7D8EE0648EC57D72018718 /* Pods_Cannonball_Dev.framework */,
-				62F49C1369695CD65C84EB59 /* Pods_Cannonball_Prod.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		921E856B19A00AC7008801A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +120,6 @@
 		921E856C19A00AD1008801A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				959DB95520B34D4900B541FA /* PoemPersistence.swift */,
 				921E857019A012BE008801A3 /* Poem.swift */,
 				9251C03B19A2711D00388ABA /* Theme.swift */,
 			);
@@ -145,7 +129,6 @@
 		921E856F19A011B5008801A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				959DB95320B34D3E00B541FA /* PoemTimelineViewController.swift */,
 				92AFFC5019EC82B7008297D2 /* AboutViewController.swift */,
 				92A47B1A199FCE4D00EDF6A8 /* PoemComposerViewController.swift */,
 				9249491219CF066200D88E79 /* PoemHistoryViewController.swift */,
@@ -171,7 +154,7 @@
 				92A47B15199FCE4D00EDF6A8 /* Cannonball */,
 				92A47B14199FCE4D00EDF6A8 /* Products */,
 				9F241EC7B45A1CAFCFE299CA /* Pods */,
-				60F7B377EE964CF9C36CE3F7 /* Frameworks */,
+				9B16E087AA21F645068E99AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,6 +193,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9B16E087AA21F645068E99AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FA93EB200B3F45F32666F /* Pods_Cannonball_Dev.framework */,
+				FC5EADDD0521AFFC5109DD49 /* Pods_Cannonball_Prod.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9F241EC7B45A1CAFCFE299CA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +226,7 @@
 				92A47B11199FCE4D00EDF6A8 /* Resources */,
 				BC4B620624B6D0ECEF9FEBB9 /* [CP] Embed Pods Frameworks */,
 				95E3E2738C98BA8050C64A0D /* [CP] Copy Pods Resources */,
-				D8B68BC5206D5BF5000E3FE3 /* Crashlytics */,
+				D8B68BC5206D5BF5000E3FE3 /* Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -255,7 +247,7 @@
 				95B237E3208E3CA60025BEA7 /* Resources */,
 				95B237E9208E3CA60025BEA7 /* [CP] Embed Pods Frameworks */,
 				95B237EA208E3CA60025BEA7 /* [CP] Copy Pods Resources */,
-				95B237EB208E3CA60025BEA7 /* Crashlytics */,
+				95B237EB208E3CA60025BEA7 /* Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -335,7 +327,6 @@
 			files = (
 				95B237E4208E3CA60025BEA7 /* Main.storyboard in Resources */,
 				95B237E5208E3CA60025BEA7 /* Themes.json in Resources */,
-				95B237F2208E3CF90025BEA7 /* Prod-Info.plist in Resources */,
 				95B237E7208E3CA60025BEA7 /* Podfile in Resources */,
 				95B237E8208E3CA60025BEA7 /* Images.xcassets in Resources */,
 			);
@@ -369,11 +360,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-frameworks.sh",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,27 +384,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-resources.sh",
-				"${PODS_ROOT}/Digits/iOS/DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle",
-				"${PODS_ROOT}/TwitterKit/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DigitsKitResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Prod/Pods-Cannonball Prod-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95B237EB208E3CA60025BEA7 /* Crashlytics */ = {
+		95B237EB208E3CA60025BEA7 /* Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Crashlytics;
+			name = "Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,13 +418,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-resources.sh",
-				"${PODS_ROOT}/Digits/iOS/DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle",
-				"${PODS_ROOT}/TwitterKit/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DigitsKitResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,25 +456,31 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-frameworks.sh",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cannonball Dev/Pods-Cannonball Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8B68BC5206D5BF5000E3FE3 /* Crashlytics */ = {
+		D8B68BC5206D5BF5000E3FE3 /* Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Crashlytics;
+			name = "Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,13 +498,11 @@
 				BF6BE6AB19F5CE070039073B /* ImageCarouselCollectionViewCell.swift in Sources */,
 				92AFFC5119EC82B7008297D2 /* AboutViewController.swift in Sources */,
 				92A47B1B199FCE4D00EDF6A8 /* PoemComposerViewController.swift in Sources */,
-				959DB95420B34D3E00B541FA /* PoemTimelineViewController.swift in Sources */,
 				9249491319CF066200D88E79 /* PoemHistoryViewController.swift in Sources */,
 				92A47B19199FCE4D00EDF6A8 /* AppDelegate.swift in Sources */,
 				921E856E19A00B95008801A3 /* ThemeCell.swift in Sources */,
 				921E857B19A116FC008801A3 /* PoemComposerWordCell.swift in Sources */,
 				92F79C7919DEC378002F9484 /* PoemCell.swift in Sources */,
-				959DB95620B34D4A00B541FA /* PoemPersistence.swift in Sources */,
 				BF6BE6A619F5CB870039073B /* ImageCarouselView.swift in Sources */,
 				920C15D519F19D4E008E344C /* ColorConstants.swift in Sources */,
 				920430DA19CB574200BB6BEC /* SignInViewController.swift in Sources */,
@@ -521,7 +522,6 @@
 				95B237D6208E3CA60025BEA7 /* PoemComposerViewController.swift in Sources */,
 				95B237D7208E3CA60025BEA7 /* PoemHistoryViewController.swift in Sources */,
 				95B237D8208E3CA60025BEA7 /* AppDelegate.swift in Sources */,
-				959DB95820B351DC00B541FA /* PoemPersistence.swift in Sources */,
 				95B237D9208E3CA60025BEA7 /* ThemeCell.swift in Sources */,
 				95B237DA208E3CA60025BEA7 /* PoemComposerWordCell.swift in Sources */,
 				95B237DB208E3CA60025BEA7 /* PoemCell.swift in Sources */,

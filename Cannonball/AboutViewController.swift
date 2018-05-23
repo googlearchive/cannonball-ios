@@ -16,8 +16,7 @@
 
 import UIKit
 import Crashlytics
-import TwitterKit
-import DigitsKit
+import Firebase
 
 class AboutViewController: UIViewController {
 
@@ -48,8 +47,9 @@ class AboutViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Viewed About", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent(AnalyticsEventSelectContent,
+                           parameters: [AnalyticsParameterItemID: "about"])
     }
 
     // MARK: IBActions
@@ -59,28 +59,28 @@ class AboutViewController: UIViewController {
     }
 
     @IBAction func learnMore(_ sender: AnyObject) {
-        UIApplication.shared.openURL(URL(string: "http://t.co/cannonball")!)
+        UIApplication.shared.openURL(URL(string: "https://github.com/Firebase/cannonball-ios/")!)
     }
 
     @IBAction func signOut(_ sender: AnyObject) {
-        // Remove any Twitter or Digits local sessions for this app.
-        let sessionStore = Twitter.sharedInstance().sessionStore
-        if let userId = sessionStore.session()?.userID {
-            sessionStore.logOutUserID(userId)
+        // Remove any Firebase Phone Auth local sessions for this app.
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
         }
-        Digits.sharedInstance().logOut()
 
         // Remove user information for any upcoming crashes in Crashlytics.
         Crashlytics.sharedInstance().setUserIdentifier(nil)
         Crashlytics.sharedInstance().setUserName(nil)
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Signed Out", customAttributes: nil)
+        // Log Analytics custom event.
+        Analytics.logEvent("logout", parameters: nil)
 
         // Present the Sign In again.
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signInViewController: UIViewController! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        present(signInViewController, animated: true, completion: nil)
+        navigationController!.popToRootViewController(animated: true)
     }
 
 }

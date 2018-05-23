@@ -15,8 +15,8 @@
 //
 
 import UIKit
-import TwitterKit
 import Crashlytics
+import Firebase
 
 class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
@@ -30,12 +30,20 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Database.database().reference().child(Auth.auth().currentUser!.uid).queryOrdered(byChild: Poem.SerializationKeys.inverseTimestamp).observe(.value, with: { snapshot in
+            var newPoems: [Poem] = []
+            for item in snapshot.children {
+                let poem = Poem(fromSnapshot: item as! DataSnapshot)
+                newPoems.append(poem)
+            }
 
-        // Log Answers Custom Event.
-        Answers.logCustomEvent(withName: "Viewed Poem History", customAttributes: nil)
+            self.poems = newPoems
+            self.tableView.reloadData()
+        })
 
-        // Retrieve the poems.
-        poems = PoemPersistence.sharedInstance.retrievePoems()
+        // Log Analytics custom event.
+        Analytics.logEvent(AnalyticsEventViewItemList,
+                           parameters: [AnalyticsParameterItemCategory: "history"])
 
         // Customize the navigation bar.
         navigationController?.navigationBar.topItem?.title = ""
@@ -70,91 +78,51 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         toggleNoPoemsLabel()
     }
 
-    // MARK: UITableViewDataSource
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return poems.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier, for: indexPath) as! UITableViewCell
-
-        if let poemCell = cell as? PoemCell {
-            poemCell.delegate = self
-            let poem = poems[indexPath.row]
-            poemCell.configureWithPoem(poem)
-        }
-
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Find the poem displayed at this index path.
-            let poem = poems[indexPath.row]
-
-            // Remove the poem and reload the table view.
-            poems = poems.filter( { $0 != poem })
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-
-            // Display the no poems label if this was the last poem.
-            toggleNoPoemsLabel()
-
-            // Archive and save the poems again.
-            PoemPersistence.sharedInstance.overwritePoems(poems)
-
-            // Log Answers Custom Event.
-            Answers.logCustomEvent(withName: "Removed Poem", customAttributes: nil)
-        }
-    }
-
     // MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.size.width * 0.75
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.poems.count
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let poem = poems[indexPath.row]
+            Analytics.logEvent(AnalyticsParameterItemCategory,
+                               parameters: [AnalyticsParameterItemCategory: poem.theme])
+            poem.ref?.removeValue()
+            // We don't need to delete the poem from our local poems array
+            // Because the callback method defined in viewDidLoad will automatically synchronize it
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let poem = poems[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier) as! PoemCell
+        cell.configureWithPoem(poem)
+        cell.delegate = self
+        return cell
+    }
+
     // MARK: PoemCellDelegate
 
     func poemCellWantsToSharePoem(_ poemCell: PoemCell) {
-        // Find the poem displayed at this index path.
-        let indexPath = tableView.indexPath(for: poemCell)
-        let poem = poems[(indexPath?.row)!]
 
         // Generate the image of the poem.
         let poemImage = poemCell.capturePoemImage()
+        let poem = poemCell.poem!
 
-        // Use the TwitterKit to create a Tweet composer.
-        let composer = TWTRComposer()
-
-        // Prepare the Tweet with the poem and image.
-        composer.setText("Just composed a poem! #cannonballapp #\(poem.theme.lowercased())")
-        composer.setImage(poemImage)
-
-        // Present the composer to the user.
-        composer.show(from: self) { result in
-            if result == .done {
-                // Log Answers Custom Event.
-                Answers.logShare(withMethod: "Twitter", contentName: poem.theme, contentType: "Poem", contentId: poem.UUID.description,
-                    customAttributes: [
-                        "Poem": poem.getSentence(),
-                        "Theme": poem.theme,
-                        "Length": poem.words.count,
-                        "Picture": poem.picture
-                    ]
-                )
-            } else if result == .cancelled {
-                // Log Answers Custom Event.
-                Answers.logCustomEvent(withName: "Cancelled Twitter Sharing",
-                    customAttributes: [
-                        "Poem": poem.getSentence(),
-                        "Theme": poem.theme,
-                        "Length": poem.words.count,
-                        "Picture": poem.picture
-                    ]
-                )
-            }
-        }
+        Analytics.logEvent(AnalyticsEventShare,
+                           parameters: [AnalyticsParameterContentType: "poem_image",
+                                        AnalyticsParameterItemCategory: poem.theme,
+                                        "method": "native_share",
+                                        "length": poem.words.count,
+                                        "picture": poem.picture])
+        let activityViewController = UIActivityViewController(activityItems: [poemImage], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
 
     // MARK: Utilities

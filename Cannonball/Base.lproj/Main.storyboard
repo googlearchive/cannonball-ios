@@ -11,28 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Popular Poems-->
-        <scene sceneID="xvW-ne-Fdi">
-            <objects>
-                <tableViewController id="Vc8-Wc-foP" customClass="PoemTimelineViewController" customModule="Cannonball" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="1qJ-gv-FWZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="1" green="0.90980392160000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.99607843139999996" green="0.90980392160000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="Vc8-Wc-foP" id="i8n-EU-aNW"/>
-                            <outlet property="delegate" destination="Vc8-Wc-foP" id="mny-ZX-IZh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Popular Poems" id="A4z-bM-j9w"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HKI-d7-bOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="776" y="1303"/>
-        </scene>
         <!--Theme Chooser View Controller-->
         <scene sceneID="pHw-4S-UaI">
             <objects>
@@ -88,15 +66,9 @@
                                 <segue destination="wiA-rN-OmI" kind="push" id="PGs-2w-0OG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Popular" id="Brd-vp-Ykq">
-                            <connections>
-                                <segue destination="Vc8-Wc-foP" kind="push" id="3W5-0s-bxT"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="historyButton" destination="e6j-wo-e5J" id="kh7-iB-0s5"/>
-                        <outlet property="tweetsButton" destination="Brd-vp-Ykq" id="NeO-0U-6c5"/>
                         <segue destination="oFl-4R-C3q" kind="modal" identifier="ShowAbout" id="rAS-nZ-AL1"/>
                     </connections>
                 </tableViewController>
@@ -447,7 +419,8 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="signInWithTwitter:" destination="LWk-Ji-zOn" eventType="touchUpInside" id="grY-Bw-c9e"/>
+                                    <action selector="skipSignIn:" destination="LWk-Ji-zOn" eventType="touchUpInside" id="vyA-9Z-oRn"/>
+                                    <segue destination="Lee-FR-LJd" kind="modal" identifier="ShowThemeChooser" id="ixt-1E-UyI"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="PFT-X7-KfD">
@@ -484,7 +457,6 @@
                     <connections>
                         <outlet property="logoView" destination="PFT-X7-KfD" id="8nt-sK-TZy"/>
                         <outlet property="signInPhoneButton" destination="uyF-uy-Dc6" id="9w2-Vs-3BF"/>
-                        <outlet property="signInTwitterButton" destination="7eD-LI-DDW" id="4iD-62-Uzn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMd-PQ-HmI" userLabel="First Responder" sceneMemberID="firstResponder"/>

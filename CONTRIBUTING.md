@@ -143,8 +143,7 @@ We'd love for you to contribute to our source code and to make Cannonball even b
       git push origin --delete my-fix-branch
       ```
 
-  * Check out the master branch:
-
+  * Check out the master branch
       ```shell
       git checkout master -f
       ```
@@ -177,11 +176,6 @@ your current agreements on file or to sign a new one.
 You generally only need to submit a CLA once, so if you've already submitted one
 (even if it was for a different project), you probably don't need to do it
 again.
-
-## License
-
-By contributing your code, You agree to license your contribution under the terms of the Apache Public License 2.0
-https://github.com/firebase/cannonball-ios/blob/master/LICENSE
 
 [github]: https://github.com/firebase/cannonball-ios
 [google-cla]: https://cla.developers.google.com
