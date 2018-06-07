@@ -17,12 +17,14 @@
 import UIKit
 import Crashlytics
 import Firebase
+import FirebaseUI
 
 class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     // MARK: Properties
 
     fileprivate let poemTableCellReuseIdentifier = "PoemCell"
+    fileprivate var dataSource : FUITableViewDataSource!;
 
     var poems: [Poem] = []
 
@@ -30,16 +32,17 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Database.database().reference().child(Auth.auth().currentUser!.uid).queryOrdered(byChild: Poem.SerializationKeys.inverseTimestamp).observe(.value, with: { snapshot in
-            var newPoems: [Poem] = []
-            for item in snapshot.children {
-                let poem = Poem(fromSnapshot: item as! DataSnapshot)
-                newPoems.append(poem)
-            }
+        let uid = Auth.auth().currentUser!.uid;
+        self.dataSource = self.tableView.bind(to: Database.database().reference().child(uid).queryOrdered(byChild: Poem.SerializationKeys.inverseTimestamp)) { tableView, indexPath, snapshot in
 
-            self.poems = newPoems
-            self.tableView.reloadData()
-        })
+            let poem = Poem(fromSnapshot: snapshot)
+            // Dequeue cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.poemTableCellReuseIdentifier) as! PoemCell
+            cell.configureWithPoem(poem)
+            cell.delegate = self
+            /* populate cell */
+            return cell
+        }
 
         // Log Analytics custom event.
         Analytics.logEvent(AnalyticsEventViewItemList,
@@ -84,10 +87,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         return tableView.frame.size.width * 0.75
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.poems.count
-    }
-
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let poem = poems[indexPath.row]
@@ -97,14 +96,6 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
             // We don't need to delete the poem from our local poems array
             // Because the callback method defined in viewDidLoad will automatically synchronize it
         }
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let poem = poems[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: poemTableCellReuseIdentifier) as! PoemCell
-        cell.configureWithPoem(poem)
-        cell.delegate = self
-        return cell
     }
 
     // MARK: PoemCellDelegate
@@ -135,12 +126,12 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
             })
         } else {
             UIView.animate(withDuration: 0.15,
-                animations: {
-                    self.tableView.backgroundView!.alpha = 0
-                },
-                completion: { finished in
-                    self.tableView.backgroundView!.isHidden = true
-                }
+                           animations: {
+                            self.tableView.backgroundView!.alpha = 0
+            },
+                           completion: { finished in
+                            self.tableView.backgroundView!.isHidden = true
+            }
             )
         }
     }
