@@ -1,19 +1,24 @@
 # Cannonball for iOS
 
-This repository contains the source code for Cannonball, an iOS application written in Swift built with [Firebase](https://firebase.google.com/).
-
 Cannonball is the fun way to create and share stories and poems on your phone. Start with a beautiful image from the gallery, then choose words about #adventure, #romance, #nature or #mystery to complete the story and share it with friends.
 
-![Screenshots of Cannonball for iOS](screenshot.png "Screenshots of Cannonball for iOS")
+## Introduction
 
-## Firebase
+This repository contains the source code for Cannonball, an iOS application written in Swift built with [Firebase](https://firebase.google.com/).
 
 Cannonball is a canonical sample iOS app to demonstrate how to use [Firebase](https://firebase.google.com/), the easiest way to build the best apps.
 
 Cannonball uses many of the features available in Firebase, including Realtime Database, Crashlytics, Google Analytics for Firebase, and Firebase Auth.
 
-## Getting Started
+## Screenshots
+![Screenshots of Cannonball for iOS](screenshot.png "Screenshots of Cannonball for iOS")
 
+## Support
+
+If you've found an error in this sample, please file an issue.
+
+Patches are encouraged, and may be submitted by forking this project and
+submitting a pull request through GitHub.
 
 ### Prerequisites
 
@@ -35,7 +40,7 @@ To get started and run the app, you need to follow these simple steps:
 
 This project is written in Swift 4.1, which requires Xcode 9 or later to run.
 
-Cannonball for iOS is compatible with iOS 8+.
+Cannonball for iOS is compatible with iOS 9+.
 
 ## Contributors
 
@@ -50,6 +55,4 @@ Cannonball for iOS is compatible with iOS 8+.
 
 ## License
 
-Copyright 2014-2018 Google LLC and contributors.
-
-Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+See [LICENSE](LICENSE)
