@@ -9,9 +9,10 @@ def cannonball_pods
     # Pods for Cannonball
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Firestore'
     pod 'FirebaseUI/Auth'
     pod 'FirebaseUI/Phone'
-    pod 'Firebase/Database'
     pod 'FirebaseUI/Database'
 
     pod 'Fabric'

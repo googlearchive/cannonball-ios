@@ -76,8 +76,17 @@ class SignInViewController: UIViewController, UIAlertViewDelegate, FUIAuthDelega
             print("Login error: \(error.localizedDescription)")
 
         case .none:
+            let userId : String = user!.uid
             Analytics.logEvent(AnalyticsEventLogin, parameters: [ "method": "phone"])
-            Crashlytics.sharedInstance().setUserIdentifier(user?.uid)
+            Crashlytics.sharedInstance().setUserIdentifier(userId)
+            let userDb = Firestore.firestore().collection("Users")
+            userDb.document(userId).getDocument { (documentSnapshot, err) in
+                if !documentSnapshot!.exists {
+                    userDb.document(userId).setData([
+                        "poems": []
+                        ])
+                }
+            }
             DispatchQueue.main.async {
                 // Navigate to the main app screen to select a theme.
                 self.performSegue(withIdentifier: "ShowThemeChooser", sender: self)

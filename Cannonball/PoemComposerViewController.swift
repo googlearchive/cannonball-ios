@@ -325,7 +325,7 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
 
     func savePoem() {
         // Save the poem current completion date.
-        poem.timestamp = Int(NSDate().timeIntervalSince1970)
+        poem.timestamp = Date()
 
         // Save the theme name for the poem.
         poem.theme = theme.name
@@ -333,10 +333,25 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
         // Save the currently displayed picture.
         poem.picture = themePictures[imageCarousel.currentImageIndex]
 
-        // Make the poem object persist by saving it to Firebase.
-        let myPoemsRef = Database.database().reference().child(Auth.auth().currentUser!.uid)
-        // Append the newly created poem.
-        myPoemsRef.childByAutoId().setValue(poem.encode())
+        // Make the poem private by default.
+        poem.isPublic = false
+
+        // Add an empty poem to the database. We'll use a batched transaction to add data to this
+        // poem and update the corresponding Users collection simultaneously.
+        let poemsDb = Firestore.firestore().collection("Poems")
+        let newPoem = poemsDb.addDocument(data: [:])
+
+        let batch = Firestore.firestore().batch()
+        let userDocument = Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid)
+
+        batch.setData(poem.encode(), forDocument: newPoem)
+        batch.updateData([
+            "poems": FieldValue.arrayUnion([newPoem])], forDocument: userDocument)
+        batch.commit() { (err) in
+            if let err = err {
+                print("Error commiting batch: \(err)")
+            }
+        }
     }
 
     func refreshWordBank() {

@@ -23,6 +23,7 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
     // MARK: Properties
 
     fileprivate let poemTableCellReuseIdentifier = "PoemCell"
+    let db = Firestore.firestore()
 
     var poems: [Poem] = []
 
@@ -30,16 +31,24 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Database.database().reference().child(Auth.auth().currentUser!.uid).queryOrdered(byChild: Poem.SerializationKeys.inverseTimestamp).observe(.value, with: { snapshot in
-            var newPoems: [Poem] = []
-            for item in snapshot.children {
-                let poem = Poem(fromSnapshot: item as! DataSnapshot)
-                newPoems.append(poem)
+        let userId = Auth.auth().currentUser!.uid
+        db.collection("Users").document(userId).addSnapshotListener { [unowned self] (userSnapshot, err) in
+            if let err = err {
+                print("Error getting user with id \(userId): \(err)")
+            } else {
+                guard let userDict = userSnapshot?.data() else {
+                    return
+                }
+                let poemsArray = userDict["poems"] as! [DocumentReference]
+                var newPoems: [Poem] = []
+                for poemRef in poemsArray {
+                    newPoems.append(Poem(fromRef: poemRef))
+                }
+                self.poems = newPoems
+                self.tableView.reloadData()
             }
+        }
 
-            self.poems = newPoems
-            self.tableView.reloadData()
-        })
 
         // Log Analytics custom event.
         Analytics.logEvent(AnalyticsEventViewItemList,
@@ -92,8 +101,8 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         if editingStyle == .delete {
             let poem = poems[indexPath.row]
             Analytics.logEvent(AnalyticsParameterItemCategory,
-                               parameters: [AnalyticsParameterItemCategory: poem.theme])
-            poem.ref?.removeValue()
+                parameters: [AnalyticsParameterItemCategory: poem.theme])
+            poem.ref?.delete()
             // We don't need to delete the poem from our local poems array
             // Because the callback method defined in viewDidLoad will automatically synchronize it
         }
@@ -116,11 +125,11 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
         let poem = poemCell.poem!
 
         Analytics.logEvent(AnalyticsEventShare,
-                           parameters: [AnalyticsParameterContentType: "poem_image",
-                                        AnalyticsParameterItemCategory: poem.theme,
-                                        "method": "native_share",
-                                        "length": poem.words.count,
-                                        "picture": poem.picture])
+            parameters: [AnalyticsParameterContentType: "poem_image",
+                AnalyticsParameterItemCategory: poem.theme,
+                "method": "native_share",
+                "length": poem.words.count,
+                "picture": poem.picture])
         let activityViewController = UIActivityViewController(activityItems: [poemImage], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }

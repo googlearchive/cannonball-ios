@@ -26,19 +26,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Use Firebase library to configure APIs
+
+        // Initialize Firebase
         FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
+
+        // Initialize Cloud Firestore and enable offline data persistence
+        let db = Firestore.firestore()
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+
+
 
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user == nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let signInViewController: AnyObject! = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
                 self.window?.rootViewController = signInViewController as? UIViewController
-            }
-            else{
-                let myPoemsRef = Database.database().reference().child(user!.uid)
-                myPoemsRef.keepSynced(true)
             }
         }
         return true;
