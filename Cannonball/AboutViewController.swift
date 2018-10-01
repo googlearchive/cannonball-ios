@@ -59,7 +59,10 @@ class AboutViewController: UIViewController {
     }
 
     @IBAction func learnMore(_ sender: AnyObject) {
-        UIApplication.shared.openURL(URL(string: "https://github.com/Firebase/cannonball-ios/")!)
+        guard let url = URL(string: "https://github.com/Firebase/cannonball-ios/") else {
+            return
+        }
+        UIApplication.shared.openURL(url)
     }
 
     @IBAction func signOut(_ sender: AnyObject) {
