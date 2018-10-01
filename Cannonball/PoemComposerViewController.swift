@@ -109,7 +109,8 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
                 // Place the countdown frame at the correct origin position.
                 self.countdownView.frame.origin.y = 10
             },
-            completion: { finished in
+            completion: { [weak self] finished in
+                guard let self = self else { return }
                 self.countdownView.start()
             }
         )
@@ -279,7 +280,8 @@ class PoemComposerViewController: UIViewController, UICollectionViewDataSource, 
                         collectionView.performBatchUpdates({
                             collectionView.deleteItems(at: [indexPath])
                             },
-                            completion: { _ in
+                            completion: { [weak self] _ in
+                                guard let self = self else { return }
                                 self.resizePoemToFitContentSize()
                                 cell.alpha = 1
                             }

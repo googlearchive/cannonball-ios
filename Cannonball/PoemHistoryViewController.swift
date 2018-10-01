@@ -129,7 +129,8 @@ class PoemHistoryViewController: UITableViewController, PoemCellDelegate {
                            animations: {
                             self.tableView.backgroundView!.alpha = 0
             },
-                           completion: { finished in
+                           completion: { [weak self] finished in
+                            guard let self = self else { return }
                             self.tableView.backgroundView!.isHidden = true
             }
             )
